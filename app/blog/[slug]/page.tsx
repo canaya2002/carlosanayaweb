@@ -52,25 +52,47 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   })
 }
 
+function renderHeading(section: BlogSection) {
+  const className = `scroll-mt-24 font-bold tracking-tight ${
+    section.level === 2
+      ? 'mb-4 mt-10 text-2xl'
+      : section.level === 3
+      ? 'mb-3 mt-8 text-xl'
+      : 'mb-2 mt-6 text-lg'
+  }`
+
+  switch (section.level) {
+    case 2:
+      return (
+        <h2 key={section.id} id={section.id} className={className}>
+          {section.content}
+        </h2>
+      )
+    case 3:
+      return (
+        <h3 key={section.id} id={section.id} className={className}>
+          {section.content}
+        </h3>
+      )
+    case 4:
+      return (
+        <h4 key={section.id} id={section.id} className={className}>
+          {section.content}
+        </h4>
+      )
+    default:
+      return (
+        <h2 key={section.id} id={section.id} className={className}>
+          {section.content}
+        </h2>
+      )
+  }
+}
+
 function renderSection(section: BlogSection) {
   switch (section.type) {
     case 'heading':
-      const HeadingTag = `h${section.level}` as keyof JSX.IntrinsicElements
-      return (
-        <HeadingTag
-          key={section.id}
-          id={section.id}
-          className={`scroll-mt-24 font-bold tracking-tight ${
-            section.level === 2
-              ? 'mb-4 mt-10 text-2xl'
-              : section.level === 3
-              ? 'mb-3 mt-8 text-xl'
-              : 'mb-2 mt-6 text-lg'
-          }`}
-        >
-          {section.content}
-        </HeadingTag>
-      )
+      return renderHeading(section)
 
     case 'paragraph':
       return (

@@ -32,9 +32,9 @@ export function generateMetadata({
   const metaDescription = description || SITE_CONFIG.description
   const metaImage = image || SITE_CONFIG.ogImage
   const metaUrl = url ? `${SITE_CONFIG.url}${url}` : SITE_CONFIG.url
-  const metaKeywords = keywords
+  const metaKeywords: string[] = keywords
     ? [...SITE_CONFIG.keywords, ...keywords]
-    : SITE_CONFIG.keywords
+    : [...SITE_CONFIG.keywords]
 
   return {
     title: metaTitle,
