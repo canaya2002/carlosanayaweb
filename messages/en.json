@@ -125,7 +125,11 @@
     "connectWithMe": "Connect with me",
     "seeMyProjects": "See my projects",
     "secondaryAccount": "Secondary account",
-    "location": "Location"
+    "location": "Location",
+    "errorTitle": "Error sending",
+    "errorDescription": "Could not send your message. Please try again.",
+    "tryAgain": "Try again",
+    "sending": "Sending..."
   },
   "services": {
     "title": "Services",
@@ -137,7 +141,10 @@
     "placeholder": "you@email.com",
     "subscribe": "Subscribe",
     "thankYou": "Thanks for subscribing!",
-    "noSpam": "No spam. Unsubscribe at any time."
+    "noSpam": "No spam. Unsubscribe at any time.",
+    "alreadySubscribed": "You are already subscribed to our newsletter.",
+    "error": "An error occurred. Please try again.",
+    "tryAgain": "Try again"
   },
   "footer": {
     "description": "Software Development Manager focused on innovation, full-stack solutions, AI/LLMs and cybersecurity.",

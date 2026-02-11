@@ -125,7 +125,11 @@
     "connectWithMe": "Conecta conmigo",
     "seeMyProjects": "Ve mis proyectos",
     "secondaryAccount": "Cuenta secundaria",
-    "location": "Ubicación"
+    "location": "Ubicación",
+    "errorTitle": "Error al enviar",
+    "errorDescription": "No se pudo enviar tu mensaje. Por favor inténtalo de nuevo.",
+    "tryAgain": "Intentar de nuevo",
+    "sending": "Enviando..."
   },
   "services": {
     "title": "Servicios",
@@ -137,7 +141,10 @@
     "placeholder": "tu@email.com",
     "subscribe": "Suscribirse",
     "thankYou": "¡Gracias por suscribirte!",
-    "noSpam": "Sin spam. Puedes cancelar en cualquier momento."
+    "noSpam": "Sin spam. Puedes cancelar en cualquier momento.",
+    "alreadySubscribed": "Ya estás suscrito a nuestro newsletter.",
+    "error": "Ocurrió un error. Inténtalo de nuevo.",
+    "tryAgain": "Intentar de nuevo"
   },
   "footer": {
     "description": "Software Development Manager con enfoque en innovación, soluciones full-stack, IA/LLMs y ciberseguridad.",
