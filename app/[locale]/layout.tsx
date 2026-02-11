@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { SITE_CONFIG, getSiteConfig } from '@/lib/constants'
+import { Analytics } from "@vercel/analytics/next"
 import { generatePersonSchema, generateWebSiteSchema } from '@/lib/seo'
 import { routing } from '@/i18n/routing'
 import { Locale } from '@/data/types'
@@ -128,6 +129,7 @@ export default async function LocaleLayout({
               <Footer />
             </div>
           </NextIntlClientProvider>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
