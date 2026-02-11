@@ -1,193 +1,135 @@
 import { Metadata } from 'next'
-import { SITE_CONFIG } from './constants'
+import { SITE_CONFIG, getSiteConfig } from './constants'
+import { Locale } from '@/data/types'
 
 interface SEOProps {
   title?: string
   description?: string
   keywords?: string[]
   image?: string
-  url?: string
+  path?: string
   type?: 'website' | 'article'
   publishedTime?: string
   modifiedTime?: string
   author?: string
   noIndex?: boolean
+  locale: Locale
 }
 
-export function generateMetadata({
+export function generatePageMetadata({
   title,
   description,
   keywords,
   image,
-  url,
+  path = '',
   type = 'website',
   publishedTime,
   modifiedTime,
   author,
   noIndex = false,
-}: SEOProps = {}): Metadata {
-  const metaTitle = title
-    ? `${title} | ${SITE_CONFIG.name}`
-    : SITE_CONFIG.title
-  const metaDescription = description || SITE_CONFIG.description
-  const metaImage = image || SITE_CONFIG.ogImage
-  const metaUrl = url ? `${SITE_CONFIG.url}${url}` : SITE_CONFIG.url
-  const metaKeywords: string[] = keywords
-    ? [...SITE_CONFIG.keywords, ...keywords]
-    : [...SITE_CONFIG.keywords]
+  locale,
+}: SEOProps): Metadata {
+  const config = getSiteConfig(locale)
+  const metaTitle = title ? `${title} | ${config.name}` : config.title
+  const metaDescription = description || config.description
+  const metaImage = image || config.ogImage
+  const metaUrl = `${config.url}/${locale}${path}`
+  const metaKeywords = keywords ? [...config.keywords, ...keywords] : [...config.keywords]
+
+  const alternateLocale = locale === 'es' ? 'en' : 'es'
 
   return {
     title: metaTitle,
     description: metaDescription,
     keywords: metaKeywords,
-    authors: [{ name: author || SITE_CONFIG.name }],
-    creator: SITE_CONFIG.name,
-    publisher: SITE_CONFIG.name,
-    robots: noIndex
-      ? { index: false, follow: false }
-      : { index: true, follow: true },
+    authors: [{ name: author || config.name }],
+    creator: config.name,
+    publisher: config.name,
+    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
     alternates: {
       canonical: metaUrl,
+      languages: {
+        'es-MX': `${config.url}/es${path}`,
+        'en-US': `${config.url}/en${path}`,
+        'x-default': `${config.url}/es${path}`,
+      },
     },
     openGraph: {
       type: type === 'article' ? 'article' : 'website',
-      locale: SITE_CONFIG.locale,
+      locale: config.locale,
+      alternateLocale: alternateLocale === 'es' ? 'es_MX' : 'en_US',
       url: metaUrl,
       title: metaTitle,
       description: metaDescription,
-      siteName: SITE_CONFIG.name,
-      images: [
-        {
-          url: metaImage,
-          width: 1200,
-          height: 630,
-          alt: metaTitle,
-        },
-      ],
-      ...(type === 'article' && {
-        publishedTime,
-        modifiedTime,
-        authors: [author || SITE_CONFIG.name],
-      }),
+      siteName: config.name,
+      images: [{ url: metaImage, width: 1200, height: 630, alt: metaTitle }],
+      ...(type === 'article' && { publishedTime, modifiedTime, authors: [author || config.name] }),
     },
     twitter: {
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
       images: [metaImage],
-      creator: '@carlosanayaruiz',
     },
   }
 }
 
-export function generatePersonSchema() {
+export function generatePersonSchema(locale: Locale) {
+  const jobTitle = locale === 'en' ? 'Software Development Manager' : 'Software Development Manager'
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Carlos Anaya Ruiz',
     url: SITE_CONFIG.url,
-    image: `${SITE_CONFIG.url}/images/avatar-carlos-placeholder.png`,
-    jobTitle: 'Software Development Manager',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Law Offices of Manuel Solis',
-    },
-    alumniOf: {
-      '@type': 'EducationalOrganization',
-      name: 'Tecnológico de Monterrey',
-    },
+    image: `${SITE_CONFIG.url}/images/avatar-carlos.png`,
+    jobTitle,
+    worksFor: { '@type': 'Organization', name: 'Law Offices of Manuel Solis' },
+    alumniOf: { '@type': 'EducationalOrganization', name: 'Tecnológico de Monterrey' },
     sameAs: [
       'https://www.linkedin.com/in/carlos-anaya-ruiz-732abb249/',
       'https://github.com/CArlos12002',
       'https://github.com/canaya2002',
     ],
-    knowsAbout: [
-      'Software Development',
-      'Full Stack Development',
-      'Project Management',
-      'Artificial Intelligence',
-      'Cybersecurity',
-      'Next.js',
-      'React',
-      'TypeScript',
-      'Python',
-    ],
+    knowsAbout: locale === 'en'
+      ? ['Software Development', 'Full Stack Development', 'Project Management', 'Artificial Intelligence', 'Cybersecurity']
+      : ['Desarrollo de Software', 'Desarrollo Full Stack', 'Gestión de Proyectos', 'Inteligencia Artificial', 'Ciberseguridad'],
   }
 }
 
-export function generateWebSiteSchema() {
+export function generateWebSiteSchema(locale: Locale) {
+  const config = getSiteConfig(locale)
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    description: SITE_CONFIG.description,
-    author: {
-      '@type': 'Person',
-      name: 'Carlos Anaya Ruiz',
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_CONFIG.url}/blog?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
+    name: config.name,
+    url: config.url,
+    description: config.description,
+    inLanguage: locale === 'en' ? 'en-US' : 'es-MX',
+    author: { '@type': 'Person', name: 'Carlos Anaya Ruiz' },
   }
 }
 
-interface BlogPostSchemaProps {
-  title: string
-  description: string
-  slug: string
-  publishedAt: string
-  modifiedAt?: string
-  image?: string
-  author?: string
-}
-
 export function generateBlogPostSchema({
-  title,
-  description,
-  slug,
-  publishedAt,
-  modifiedAt,
-  image,
-  author = 'Carlos Anaya Ruiz',
-}: BlogPostSchemaProps) {
+  title, description, slug, publishedAt, modifiedAt, author = 'Carlos Anaya Ruiz', locale,
+}: {
+  title: string; description: string; slug: string; publishedAt: string; modifiedAt?: string; author?: string; locale: Locale
+}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: title,
-    description: description,
-    image: image || `${SITE_CONFIG.url}/images/blog-cover-placeholder.png`,
-    url: `${SITE_CONFIG.url}/blog/${slug}`,
+    description,
+    url: `${SITE_CONFIG.url}/${locale}/blog/${slug}`,
+    inLanguage: locale === 'en' ? 'en-US' : 'es-MX',
     datePublished: publishedAt,
     dateModified: modifiedAt || publishedAt,
-    author: {
-      '@type': 'Person',
-      name: author,
-      url: SITE_CONFIG.url,
-    },
-    publisher: {
-      '@type': 'Person',
-      name: 'Carlos Anaya Ruiz',
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_CONFIG.url}/images/avatar-carlos-placeholder.png`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${SITE_CONFIG.url}/blog/${slug}`,
-    },
+    author: { '@type': 'Person', name: author, url: SITE_CONFIG.url },
+    publisher: { '@type': 'Person', name: 'Carlos Anaya Ruiz' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_CONFIG.url}/${locale}/blog/${slug}` },
   }
 }
 
-interface BreadcrumbItem {
-  name: string
-  url: string
-}
-
-export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
+export function generateBreadcrumbSchema(items: { name: string; url: string }[], locale: Locale) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -195,7 +137,7 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${SITE_CONFIG.url}${item.url}`,
+      item: `${SITE_CONFIG.url}/${locale}${item.url}`,
     })),
   }
 }

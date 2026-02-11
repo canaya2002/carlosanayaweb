@@ -1,58 +1,79 @@
 import { MetadataRoute } from 'next'
 import { SITE_CONFIG } from '@/lib/constants'
-import { blogPosts } from '@/data/blog-posts'
-import { projects } from '@/data/projects'
+import { getAllPostSlugs } from '@/data/blog-posts'
+import { getAllProjectSlugs } from '@/data/projects'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url
+  const locales = ['es', 'en']
+  const now = new Date()
 
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/cv`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.6,
-    },
+  const staticPages = [
+    { path: '', priority: 1, changeFrequency: 'weekly' as const },
+    { path: '/blog', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/projects', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/cv', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/contact', priority: 0.6, changeFrequency: 'yearly' as const },
   ]
 
-  // Blog posts
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  const entries: MetadataRoute.Sitemap = []
 
-  return [...staticPages, ...blogPages]
+  // Static pages in both locales
+  for (const page of staticPages) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${baseUrl}/${locale}${page.path}`,
+        lastModified: now,
+        changeFrequency: page.changeFrequency,
+        priority: page.priority,
+        alternates: {
+          languages: {
+            es: `${baseUrl}/es${page.path}`,
+            en: `${baseUrl}/en${page.path}`,
+          },
+        },
+      })
+    }
+  }
+
+  // Blog posts in both locales
+  const blogSlugs = getAllPostSlugs()
+  for (const slug of blogSlugs) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${baseUrl}/${locale}/blog/${slug}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: {
+          languages: {
+            es: `${baseUrl}/es/blog/${slug}`,
+            en: `${baseUrl}/en/blog/${slug}`,
+          },
+        },
+      })
+    }
+  }
+
+  // Project pages in both locales
+  const projectSlugs = getAllProjectSlugs()
+  for (const slug of projectSlugs) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${baseUrl}/${locale}/projects/${slug}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: {
+          languages: {
+            es: `${baseUrl}/es/projects/${slug}`,
+            en: `${baseUrl}/en/projects/${slug}`,
+          },
+        },
+      })
+    }
+  }
+
+  return entries
 }

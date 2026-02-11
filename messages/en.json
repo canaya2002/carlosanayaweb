@@ -1,0 +1,175 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "blog": "Blog",
+    "projects": "Projects",
+    "cv": "CV",
+    "contact": "Contact",
+    "downloadCV": "Download CV",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "cta": "Read the Blog",
+    "ctaSecondary": "View Projects",
+    "ctaTertiary": "Contact",
+    "latestPosts": "Latest posts",
+    "readMore": "Read full article"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Thoughts on technology, innovation, artificial intelligence and its impact on society.",
+    "readingTime": "min read",
+    "publishedOn": "Published on",
+    "backToBlog": "Back to blog",
+    "relatedPosts": "Related Posts",
+    "tableOfContents": "In this article",
+    "comingSoon": "More articles coming soon. Stay tuned!",
+    "readLater": "Read later",
+    "saved": "Saved",
+    "removeFromSaved": "Remove from saved",
+    "saveForLater": "Save for later",
+    "featuredPost": "Featured Article",
+    "allPosts": "All Articles",
+    "searchPlaceholder": "Search articles..."
+  },
+  "about": {
+    "title": "About Me",
+    "professionalSummary": "Professional Summary",
+    "skills": "Skills",
+    "technical": "Technical",
+    "management": "Management",
+    "soft": "Soft Skills",
+    "languages": "Languages",
+    "awards": "Awards",
+    "viewAll": "View all",
+    "wantToKnowMore": "Want to know more?",
+    "exploreCV": "Explore my full CV or check out my recent projects.",
+    "viewCV": "View Full CV",
+    "viewProjects": "View Projects"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A selection of projects I've worked on, from AI platforms to web infrastructure modernization.",
+    "featured": "Featured Projects",
+    "someWorks": "Some of my most recent and impactful work.",
+    "viewAll": "View all",
+    "viewAllProjects": "View all projects",
+    "inDevelopment": "In development",
+    "demo": "Demo",
+    "code": "Code",
+    "website": "Website",
+    "interestedInCollaborating": "Interested in collaborating?",
+    "openToProjects": "I'm open to new projects and collaboration opportunities.",
+    "contactMe": "Contact Me",
+    "viewCV": "View Full CV",
+    "techStack": "Tech Stack",
+    "overview": "Overview",
+    "gallery": "Gallery",
+    "backToProjects": "Back to Projects",
+    "categories": {
+      "ai": "Artificial Intelligence",
+      "web": "Web Development",
+      "mobile": "Mobile",
+      "data": "Data",
+      "other": "Other"
+    }
+  },
+  "cv": {
+    "title": "CV - Curriculum Vitae",
+    "summary": "Professional Summary",
+    "experience": "Professional Experience",
+    "education": "Education",
+    "featuredProjects": "Featured Projects",
+    "awards": "Awards & Recognition",
+    "certifications": "Certifications",
+    "skills": "Skills",
+    "languagesSection": "Languages",
+    "downloadPDF": "Download CV as PDF",
+    "needPrintable": "Need a printable version?",
+    "downloadDescription": "Download my CV in PDF format to have it always available.",
+    "contactMe": "Contact Me",
+    "current": "Current",
+    "certCategories": {
+      "development": "Development",
+      "management": "Management",
+      "ai": "Artificial Intelligence",
+      "infrastructure": "Infrastructure",
+      "security": "Security"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a project in mind or want to collaborate? I'd love to hear from you. Fill out the form or contact me directly.",
+    "contactInfo": "Contact Information",
+    "socialMedia": "Social Media",
+    "sendMessage": "Send me a message",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@email.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "What do you want to talk about?",
+    "message": "Message",
+    "messagePlaceholder": "Tell me more about your project or idea...",
+    "send": "Send Message",
+    "messageSent": "Message sent!",
+    "thankYou": "Thank you for reaching out. I'll respond as soon as possible.",
+    "sendAnother": "Send another message",
+    "preferToSeeWork": "Prefer to see my work first?",
+    "exploreDescription": "Explore my projects and check out my professional experience.",
+    "viewProjects": "View Projects",
+    "viewCV": "View CV",
+    "readBlog": "Read Blog",
+    "connectWithMe": "Connect with me",
+    "seeMyProjects": "See my projects",
+    "secondaryAccount": "Secondary account",
+    "location": "Location"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Areas where I can help you achieve your goals."
+  },
+  "newsletter": {
+    "title": "Subscribe to the Newsletter",
+    "subtitle": "Get updates on new projects, articles, and thoughts on technology.",
+    "placeholder": "you@email.com",
+    "subscribe": "Subscribe",
+    "thankYou": "Thanks for subscribing!",
+    "noSpam": "No spam. Unsubscribe at any time."
+  },
+  "footer": {
+    "description": "Software Development Manager focused on innovation, full-stack solutions, AI/LLMs and cybersecurity.",
+    "navigation": "Navigation",
+    "contactTitle": "Contact",
+    "allRightsReserved": "All rights reserved."
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Switch to light mode",
+    "dark": "Switch to dark mode"
+  },
+  "language": {
+    "switchTo": "Español",
+    "current": "English",
+    "label": "Language"
+  },
+  "breadcrumbs": {
+    "home": "Home"
+  },
+  "common": {
+    "readMore": "Read more",
+    "viewMore": "View more",
+    "present": "Present"
+  },
+  "seo": {
+    "homeTitle": "Carlos Anaya Ruiz | Software Development Manager & Full Stack Developer",
+    "homeDescription": "Professional portfolio of Carlos Anaya Ruiz. Software development leader, technology innovation, full-stack, AI/LLMs and cybersecurity.",
+    "aboutDescription": "Learn more about Carlos Anaya Ruiz. Software development leader focused on innovation, AI and cybersecurity.",
+    "blogDescription": "Articles on technology, artificial intelligence, cybersecurity and software development.",
+    "projectsDescription": "Featured projects by Carlos Anaya Ruiz. Software development, AI, and innovative technology solutions.",
+    "cvDescription": "Full CV of Carlos Anaya Ruiz. Professional experience, education, certifications, projects and skills.",
+    "contactDescription": "Contact Carlos Anaya Ruiz. Have a project in mind or want to collaborate?"
+  }
+}

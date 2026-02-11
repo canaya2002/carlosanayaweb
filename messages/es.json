@@ -1,0 +1,175 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "blog": "Blog",
+    "projects": "Proyectos",
+    "cv": "CV",
+    "contact": "Contacto",
+    "downloadCV": "Descargar CV",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "hero": {
+    "cta": "Leer el Blog",
+    "ctaSecondary": "Ver Proyectos",
+    "ctaTertiary": "Contactar",
+    "latestPosts": "Últimas publicaciones",
+    "readMore": "Leer artículo completo"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Reflexiones sobre tecnología, innovación, inteligencia artificial y su impacto en la sociedad.",
+    "readingTime": "min de lectura",
+    "publishedOn": "Publicado el",
+    "backToBlog": "Volver al blog",
+    "relatedPosts": "Posts Relacionados",
+    "tableOfContents": "En este artículo",
+    "comingSoon": "Próximamente más artículos. ¡Mantente al tanto!",
+    "readLater": "Leer después",
+    "saved": "Guardado",
+    "removeFromSaved": "Quitar de guardados",
+    "saveForLater": "Guardar para leer después",
+    "featuredPost": "Artículo Destacado",
+    "allPosts": "Todos los Artículos",
+    "searchPlaceholder": "Buscar artículos..."
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "professionalSummary": "Resumen Profesional",
+    "skills": "Habilidades",
+    "technical": "Técnicas",
+    "management": "Gestión",
+    "soft": "Blandas",
+    "languages": "Idiomas",
+    "awards": "Reconocimientos",
+    "viewAll": "Ver todos",
+    "wantToKnowMore": "¿Quieres saber más?",
+    "exploreCV": "Explora mi CV completo o revisa mis proyectos recientes.",
+    "viewCV": "Ver CV Completo",
+    "viewProjects": "Ver Proyectos"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Una selección de proyectos en los que he trabajado, desde plataformas de IA hasta modernización de infraestructura web.",
+    "featured": "Proyectos Destacados",
+    "someWorks": "Algunos de mis trabajos más recientes e impactantes.",
+    "viewAll": "Ver todos",
+    "viewAllProjects": "Ver todos los proyectos",
+    "inDevelopment": "En desarrollo",
+    "demo": "Demo",
+    "code": "Código",
+    "website": "Sitio Web",
+    "interestedInCollaborating": "¿Interesado en colaborar?",
+    "openToProjects": "Estoy abierto a nuevos proyectos y oportunidades de colaboración.",
+    "contactMe": "Contáctame",
+    "viewCV": "Ver CV Completo",
+    "techStack": "Stack Tecnológico",
+    "overview": "Descripción General",
+    "gallery": "Galería",
+    "backToProjects": "Volver a Proyectos",
+    "categories": {
+      "ai": "Inteligencia Artificial",
+      "web": "Desarrollo Web",
+      "mobile": "Móvil",
+      "data": "Datos",
+      "other": "Otros"
+    }
+  },
+  "cv": {
+    "title": "CV - Curriculum Vitae",
+    "summary": "Resumen Profesional",
+    "experience": "Experiencia Profesional",
+    "education": "Educación",
+    "featuredProjects": "Proyectos Destacados",
+    "awards": "Reconocimientos y Premios",
+    "certifications": "Certificaciones",
+    "skills": "Habilidades",
+    "languagesSection": "Idiomas",
+    "downloadPDF": "Descargar CV en PDF",
+    "needPrintable": "¿Necesitas una versión imprimible?",
+    "downloadDescription": "Descarga mi CV en formato PDF para tenerlo siempre disponible.",
+    "contactMe": "Contáctame",
+    "current": "Actual",
+    "certCategories": {
+      "development": "Desarrollo",
+      "management": "Gestión",
+      "ai": "Inteligencia Artificial",
+      "infrastructure": "Infraestructura",
+      "security": "Seguridad"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Tienes un proyecto en mente o quieres colaborar? Me encantaría escucharte. Completa el formulario o contáctame directamente.",
+    "contactInfo": "Información de Contacto",
+    "socialMedia": "Redes Sociales",
+    "sendMessage": "Envíame un mensaje",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Email",
+    "emailPlaceholder": "tu@email.com",
+    "subject": "Asunto",
+    "subjectPlaceholder": "¿Sobre qué quieres hablar?",
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntame más sobre tu proyecto o idea...",
+    "send": "Enviar Mensaje",
+    "messageSent": "¡Mensaje enviado!",
+    "thankYou": "Gracias por contactarme. Te responderé lo antes posible.",
+    "sendAnother": "Enviar otro mensaje",
+    "preferToSeeWork": "¿Prefieres ver mi trabajo primero?",
+    "exploreDescription": "Explora mis proyectos y revisa mi experiencia profesional.",
+    "viewProjects": "Ver Proyectos",
+    "viewCV": "Ver CV",
+    "readBlog": "Leer Blog",
+    "connectWithMe": "Conecta conmigo",
+    "seeMyProjects": "Ve mis proyectos",
+    "secondaryAccount": "Cuenta secundaria",
+    "location": "Ubicación"
+  },
+  "services": {
+    "title": "Servicios",
+    "subtitle": "Áreas en las que puedo ayudarte a alcanzar tus objetivos."
+  },
+  "newsletter": {
+    "title": "Suscríbete al Newsletter",
+    "subtitle": "Recibe actualizaciones sobre nuevos proyectos, artículos y reflexiones sobre tecnología.",
+    "placeholder": "tu@email.com",
+    "subscribe": "Suscribirse",
+    "thankYou": "¡Gracias por suscribirte!",
+    "noSpam": "Sin spam. Puedes cancelar en cualquier momento."
+  },
+  "footer": {
+    "description": "Software Development Manager con enfoque en innovación, soluciones full-stack, IA/LLMs y ciberseguridad.",
+    "navigation": "Navegación",
+    "contactTitle": "Contacto",
+    "allRightsReserved": "Todos los derechos reservados."
+  },
+  "theme": {
+    "toggle": "Cambiar tema",
+    "light": "Cambiar a modo claro",
+    "dark": "Cambiar a modo oscuro"
+  },
+  "language": {
+    "switchTo": "English",
+    "current": "Español",
+    "label": "Idioma"
+  },
+  "breadcrumbs": {
+    "home": "Inicio"
+  },
+  "common": {
+    "readMore": "Leer más",
+    "viewMore": "Ver más",
+    "present": "Presente"
+  },
+  "seo": {
+    "homeTitle": "Carlos Anaya Ruiz | Software Development Manager & Full Stack Developer",
+    "homeDescription": "Portafolio profesional de Carlos Anaya Ruiz. Líder en desarrollo de software, innovación tecnológica, full-stack, IA/LLMs y ciberseguridad.",
+    "aboutDescription": "Conoce más sobre Carlos Anaya Ruiz. Líder en desarrollo de software con enfoque en innovación, IA y ciberseguridad.",
+    "blogDescription": "Artículos sobre tecnología, inteligencia artificial, ciberseguridad y desarrollo de software.",
+    "projectsDescription": "Proyectos destacados de Carlos Anaya Ruiz. Desarrollo de software, IA, y soluciones tecnológicas innovadoras.",
+    "cvDescription": "CV completo de Carlos Anaya Ruiz. Experiencia profesional, educación, certificaciones, proyectos y habilidades.",
+    "contactDescription": "Contacta a Carlos Anaya Ruiz. ¿Tienes un proyecto en mente o quieres colaborar?"
+  }
+}

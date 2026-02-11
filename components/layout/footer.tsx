@@ -1,91 +1,65 @@
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { Github, Linkedin, Mail } from 'lucide-react'
-import { SOCIAL_LINKS, NAVIGATION_LINKS } from '@/lib/constants'
+import { SOCIAL_LINKS } from '@/lib/constants'
 
 export function Footer() {
+  const t = useTranslations('footer')
+  const tn = useTranslations('nav')
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t bg-card">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-4">
-          {/* Brand */}
           <div className="md:col-span-2">
-            <Link
-              href="/"
-              className="text-lg font-semibold tracking-tight"
-            >
+            <Link href="/" className="text-lg font-bold tracking-tight">
               Carlos Anaya Ruiz
             </Link>
-            <p className="mt-2 max-w-md text-sm text-muted-foreground">
-              Software Development Manager con enfoque en innovación,
-              soluciones full-stack, IA/LLMs y ciberseguridad.
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+              {t('description')}
             </p>
             <div className="mt-4 flex gap-4">
-              <a
-                href={SOCIAL_LINKS.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-primary"
-                aria-label="LinkedIn"
-              >
+              <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a
-                href={SOCIAL_LINKS.github1}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground transition-colors hover:text-primary"
-                aria-label="GitHub"
-              >
+              <a href={SOCIAL_LINKS.github1} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary" aria-label="GitHub">
                 <Github className="h-5 w-5" />
               </a>
-              <a
-                href={`mailto:${SOCIAL_LINKS.email}`}
-                className="text-muted-foreground transition-colors hover:text-primary"
-                aria-label="Email"
-              >
+              <a href={`mailto:${SOCIAL_LINKS.email}`} className="text-muted-foreground transition-colors hover:text-primary" aria-label="Email">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h3 className="font-semibold">Navegación</h3>
+            <h3 className="font-semibold">{t('navigation')}</h3>
             <ul className="mt-4 space-y-2">
-              {NAVIGATION_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {(['home', 'blog', 'projects', 'about', 'cv', 'contact'] as const).map((key) => {
+                const hrefMap: Record<string, '/' | '/blog' | '/projects' | '/about' | '/cv' | '/contact'> = {
+                  home: '/', blog: '/blog', projects: '/projects', about: '/about', cv: '/cv', contact: '/contact',
+                }
+                return (
+                  <li key={key}>
+                    <Link href={hrefMap[key]} className="text-sm text-muted-foreground transition-colors hover:text-primary">
+                      {tn(key)}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="font-semibold">Contacto</h3>
+            <h3 className="font-semibold">{t('contactTitle')}</h3>
             <ul className="mt-4 space-y-2">
               <li>
-                <a
-                  href={`mailto:${SOCIAL_LINKS.email}`}
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                >
+                <a href={`mailto:${SOCIAL_LINKS.email}`} className="text-sm text-muted-foreground transition-colors hover:text-primary">
                   {SOCIAL_LINKS.email}
                 </a>
               </li>
               <li>
-                <a
-                  href={SOCIAL_LINKS.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                >
+                <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground transition-colors hover:text-primary">
                   LinkedIn
                 </a>
               </li>
@@ -94,10 +68,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>
-            © {currentYear} Carlos Anaya Ruiz. Todos los derechos
-            reservados.
-          </p>
+          <p>© {currentYear} Carlos Anaya Ruiz. {t('allRightsReserved')}</p>
         </div>
       </div>
     </footer>

@@ -1,0 +1,135 @@
+import type { Metadata } from 'next'
+import { Inter, Playfair_Display } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages, setRequestLocale } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
+import { SITE_CONFIG, getSiteConfig } from '@/lib/constants'
+import { generatePersonSchema, generateWebSiteSchema } from '@/lib/seo'
+import { routing } from '@/i18n/routing'
+import { Locale } from '@/data/types'
+
+const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
+  variable: '--font-geist-sans',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin', 'latin-ext'],
+  variable: '--font-display-serif',
+  display: 'swap',
+  weight: ['400', '600', '700'],
+})
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const config = getSiteConfig(locale as Locale)
+
+  return {
+    metadataBase: new URL(SITE_CONFIG.url),
+    title: {
+      default: config.title,
+      template: `%s | ${config.name}`,
+    },
+    description: config.description,
+    keywords: config.keywords,
+    authors: [{ name: config.name }],
+    creator: config.name,
+    alternates: {
+      canonical: `${SITE_CONFIG.url}/${locale}`,
+      languages: {
+        'es-MX': `${SITE_CONFIG.url}/es`,
+        'en-US': `${SITE_CONFIG.url}/en`,
+        'x-default': `${SITE_CONFIG.url}/es`,
+      },
+    },
+    openGraph: {
+      type: 'website',
+      locale: config.locale,
+      url: `${SITE_CONFIG.url}/${locale}`,
+      title: config.title,
+      description: config.description,
+      siteName: config.name,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: config.title,
+      description: config.description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  }
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+
+  if (!routing.locales.includes(locale as 'es' | 'en')) {
+    notFound()
+  }
+
+  setRequestLocale(locale)
+  const messages = await getMessages()
+
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generatePersonSchema(locale as Locale)),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebSiteSchema(locale as Locale)),
+          }}
+        />
+      </head>
+      <body className={`${inter.variable} ${playfair.variable} min-h-screen font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextIntlClientProvider messages={messages}>
+            <a href="#main-content" className="skip-to-content">
+              Skip to content
+            </a>
+            <div className="relative flex min-h-screen flex-col">
+              <Header />
+              <main id="main-content" className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </NextIntlClientProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}

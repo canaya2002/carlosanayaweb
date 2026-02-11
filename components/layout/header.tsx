@@ -1,98 +1,97 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { Link, usePathname } from '@/i18n/navigation'
 import { Menu, X, Download } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { NAVIGATION_LINKS } from '@/lib/constants'
+import { LanguageSwitcher } from '@/components/language-switcher'
+
+const NAV_ITEMS = [
+  { href: '/' as const, key: 'home' },
+  { href: '/blog' as const, key: 'blog' },
+  { href: '/projects' as const, key: 'projects' },
+  { href: '/about' as const, key: 'about' },
+  { href: '/cv' as const, key: 'cv' },
+  { href: '/contact' as const, key: 'contact' },
+] as const
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const t = useTranslations('nav')
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link
-          href="/"
-          className="text-lg font-semibold tracking-tight transition-colors hover:text-primary"
-        >
+      <nav className="container mx-auto flex h-16 items-center justify-between px-4" aria-label="Main navigation">
+        <Link href="/" className="text-lg font-bold tracking-tight transition-colors hover:text-primary">
           Carlos Anaya Ruiz
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <div className="hidden items-center gap-1 md:flex">
-          {NAVIGATION_LINKS.map((link) => (
+          {NAV_ITEMS.map((item) => (
             <Link
-              key={link.href}
-              href={link.href}
+              key={item.key}
+              href={item.href}
               className={cn(
-                'px-3 py-2 text-sm font-medium transition-colors hover:text-primary',
-                pathname === link.href
-                  ? 'text-primary'
-                  : 'text-muted-foreground'
+                'px-3 py-2 text-sm font-medium transition-colors hover:text-primary rounded-md',
+                pathname === item.href ? 'text-primary bg-accent' : 'text-muted-foreground'
               )}
             >
-              {link.label}
+              {t(item.key)}
             </Link>
           ))}
         </div>
 
         <div className="hidden items-center gap-2 md:flex">
-          <ThemeToggle />
+          <LanguageSwitcher />
           <Button asChild size="sm">
             <Link href="/cv">
               <Download className="mr-2 h-4 w-4" />
-              Descargar CV
+              {t('downloadCV')}
             </Link>
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Controls */}
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
+          <LanguageSwitcher />
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Abrir menú"
+            aria-label={mobileMenuOpen ? t('closeMenu') : t('openMenu')}
+            aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="border-t bg-background md:hidden">
+        <div className="border-t bg-background md:hidden" role="dialog" aria-label="Mobile menu">
           <div className="container mx-auto px-4 py-4">
             <div className="flex flex-col gap-2">
-              {NAVIGATION_LINKS.map((link) => (
+              {NAV_ITEMS.map((item) => (
                 <Link
-                  key={link.href}
-                  href={link.href}
+                  key={item.key}
+                  href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     'rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent',
-                    pathname === link.href
-                      ? 'bg-accent text-primary'
-                      : 'text-muted-foreground'
+                    pathname === item.href ? 'bg-accent text-primary' : 'text-muted-foreground'
                   )}
                 >
-                  {link.label}
+                  {t(item.key)}
                 </Link>
               ))}
               <Button asChild size="sm" className="mt-2">
                 <Link href="/cv" onClick={() => setMobileMenuOpen(false)}>
                   <Download className="mr-2 h-4 w-4" />
-                  Descargar CV
+                  {t('downloadCV')}
                 </Link>
               </Button>
             </div>
