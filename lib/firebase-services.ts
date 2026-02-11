@@ -1,9 +1,6 @@
 import {
   collection,
   addDoc,
-  query,
-  where,
-  getDocs,
   serverTimestamp,
   Timestamp,
 } from 'firebase/firestore'
@@ -29,17 +26,6 @@ export async function subscribeNewsletter(
   locale: string
 ): Promise<{ success: boolean; alreadySubscribed?: boolean; error?: string }> {
   try {
-    // Check if already subscribed
-    const q = query(
-      collection(db, 'newsletter_subscribers'),
-      where('email', '==', email.toLowerCase().trim())
-    )
-    const existing = await getDocs(q)
-
-    if (!existing.empty) {
-      return { success: true, alreadySubscribed: true }
-    }
-
     await addDoc(collection(db, 'newsletter_subscribers'), {
       email: email.toLowerCase().trim(),
       locale,
