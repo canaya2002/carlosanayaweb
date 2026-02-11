@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -35,10 +36,14 @@ export function ProjectsPreview({ locale }: Props) {
           {projects.map((project) => (
             <Link key={project.id} href={`/projects/${project.slug}`}>
               <Card className="group h-full overflow-hidden transition-shadow hover:shadow-lg">
-                <div className="relative h-48 bg-gradient-to-br from-primary/10 to-primary/5">
-                  <div className="flex h-full items-center justify-center text-6xl text-primary/20">
-                    {project.category === 'ai' ? '🤖' : '🌐'}
-                  </div>
+                <div className="relative h-48 overflow-hidden bg-muted">
+                  <Image
+                    src={project.images[0]}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                   {project.current && (
                     <Badge className="absolute right-4 top-4">{t('inDevelopment')}</Badge>
                   )}

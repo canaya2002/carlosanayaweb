@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
@@ -60,8 +61,8 @@ function BlogPageContent({ locale, posts }: { locale: Locale; posts: ReturnType<
           {posts.map((post) => (
             <Card key={post.id} className="group overflow-hidden transition-shadow hover:shadow-lg">
               <Link href={`/blog/${post.slug}`} className="md:flex">
-                <div className="relative h-48 bg-gradient-to-br from-primary/10 to-primary/5 md:h-auto md:w-72 md:shrink-0">
-                  <div className="flex h-full items-center justify-center text-5xl text-primary/20">📝</div>
+                <div className="relative h-48 overflow-hidden bg-muted md:h-auto md:w-72 md:shrink-0">
+                  <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 288px" />
                 </div>
                 <div className="flex flex-1 flex-col">
                   <CardHeader>

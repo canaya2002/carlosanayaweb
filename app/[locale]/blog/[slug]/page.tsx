@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
@@ -127,8 +128,8 @@ function BlogPostContent({ post, locale, slug }: { post: NonNullable<ReturnType<
             </div>
           </header>
 
-          <div className="mb-8 aspect-video overflow-hidden rounded-lg bg-gradient-to-br from-primary/10 to-primary/5">
-            <div className="flex h-full items-center justify-center text-6xl text-primary/20">📝</div>
+          <div className="relative mb-8 aspect-video overflow-hidden rounded-lg bg-muted">
+            <Image src={post.coverImage} alt={post.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 800px" priority />
           </div>
 
           <div className="lg:grid lg:grid-cols-[1fr_250px] lg:gap-12">

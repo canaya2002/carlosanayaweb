@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
@@ -59,7 +60,7 @@ function CVContent({ locale }: { locale: Locale }) {
         <div className="mb-12 rounded-xl border bg-card p-8">
           <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
             <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
-              <div className="flex h-full w-full items-center justify-center text-2xl font-semibold text-muted-foreground">CA</div>
+              <Image src="/images/avatar-carlos.png" alt={personal.name} fill className="object-cover" sizes="112px" priority />
             </div>
             <div className="flex-1 text-center md:text-left">
               <h1 className="mb-1 text-3xl font-bold tracking-tight md:text-4xl">{personal.name}</h1>
@@ -194,8 +195,8 @@ function CVContent({ locale }: { locale: Locale }) {
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {certs.map((cert) => (
                     <Card key={cert.id} className="group">
-                      <div className="relative h-32 bg-gradient-to-br from-primary/10 to-primary/5">
-                        <div className="flex h-full items-center justify-center text-3xl text-primary/20">🏆</div>
+                      <div className="relative h-32 overflow-hidden bg-muted">
+                        <Image src={cert.image} alt={cert.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                       </div>
                       <CardContent className="p-4">
                         <h4 className="line-clamp-2 font-medium transition-colors group-hover:text-primary">{cert.name}</h4>

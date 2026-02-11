@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
@@ -53,7 +54,7 @@ function AboutContent({ locale }: { locale: Locale }) {
         <div className="mb-12 text-center">
           <div className="mb-6 flex justify-center">
             <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
-              <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-muted-foreground">CA</div>
+              <Image src="/images/avatar-carlos.png" alt={personal.name} fill className="object-cover" sizes="128px" priority />
             </div>
           </div>
           <h1 className="mb-2 text-4xl font-bold tracking-tight md:text-5xl">{personal.name}</h1>

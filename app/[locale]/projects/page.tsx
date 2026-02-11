@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
@@ -59,11 +60,9 @@ function ProjectsContent({ locale }: { locale: Locale }) {
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className={`relative ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                     <div className="grid h-full grid-cols-2 gap-2 p-4">
-                      {[0, 1].map((imgIndex) => (
-                        <div key={imgIndex} className="relative aspect-video overflow-hidden rounded-lg bg-gradient-to-br from-primary/10 to-primary/5">
-                          <div className="flex h-full w-full items-center justify-center text-4xl text-primary/20">
-                            {imgIndex === 0 ? '🖥️' : '📱'}
-                          </div>
+                      {project.images.slice(0, 2).map((img, imgIndex) => (
+                        <div key={imgIndex} className="relative aspect-video overflow-hidden rounded-lg bg-muted">
+                          <Image src={img} alt={`${project.title} ${imgIndex + 1}`} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 25vw" />
                         </div>
                       ))}
                     </div>

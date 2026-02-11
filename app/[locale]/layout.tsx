@@ -3,11 +3,9 @@ import { Inter, Playfair_Display } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
-import { ThemeProvider } from '@/components/theme-provider'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { SITE_CONFIG, getSiteConfig } from '@/lib/constants'
-import { Analytics } from "@vercel/analytics/next"
 import { generatePersonSchema, generateWebSiteSchema } from '@/lib/seo'
 import { routing } from '@/i18n/routing'
 import { Locale } from '@/data/types'
@@ -48,6 +46,17 @@ export async function generateMetadata({
     keywords: config.keywords,
     authors: [{ name: config.name }],
     creator: config.name,
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: '32x32' },
+        { url: '/images/icon-192.png', sizes: '192x192', type: 'image/png' },
+        { url: '/images/icon-512.png', sizes: '512x512', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/images/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      ],
+    },
+    manifest: '/manifest.json',
     alternates: {
       canonical: `${SITE_CONFIG.url}/${locale}`,
       languages: {
@@ -63,11 +72,21 @@ export async function generateMetadata({
       title: config.title,
       description: config.description,
       siteName: config.name,
+      images: [
+        {
+          url: `/images/og-${locale}.png`,
+          width: 1200,
+          height: 630,
+          alt: config.title,
+          type: 'image/png',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: config.title,
       description: config.description,
+      images: [`/images/og-${locale}.png`],
     },
     robots: {
       index: true,
@@ -116,7 +135,6 @@ export default async function LocaleLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfair.variable} min-h-screen font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider messages={messages}>
             <a href="#main-content" className="skip-to-content">
               Skip to content
@@ -129,8 +147,6 @@ export default async function LocaleLayout({
               <Footer />
             </div>
           </NextIntlClientProvider>
-          <Analytics />
-        </ThemeProvider>
       </body>
     </html>
   )

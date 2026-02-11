@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
@@ -90,16 +91,11 @@ function ProjectDetailContent({ project, locale }: { project: NonNullable<Return
           <h2 className="mb-6 text-2xl font-bold">{t('gallery')}</h2>
           <div className="grid gap-4 md:grid-cols-3">
             {project.images.map((img, index) => (
-              <div key={index} className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 shadow-sm">
-                <div className="flex h-full w-full items-center justify-center text-5xl text-primary/20">
-                  {index === 0 ? '🖥️' : index === 1 ? '📊' : '📱'}
-                </div>
+              <div key={index} className="relative aspect-video overflow-hidden rounded-xl bg-muted shadow-sm">
+                <Image src={img} alt={`${project.title} ${index + 1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
               </div>
             ))}
           </div>
-          <p className="mt-3 text-center text-sm text-muted-foreground italic">
-            {locale === 'en' ? 'Place your project screenshots in /public/images/projects/' : 'Coloca tus capturas de proyecto en /public/images/projects/'}
-          </p>
         </section>
 
         {/* Overview */}

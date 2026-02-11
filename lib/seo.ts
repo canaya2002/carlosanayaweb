@@ -34,7 +34,8 @@ export function generatePageMetadata({
   const metaDescription = description || config.description
   const metaImage = image || config.ogImage
   const metaUrl = `${config.url}/${locale}${path}`
-  const metaKeywords = keywords ? [...config.keywords, ...keywords] : [...config.keywords]
+  const configKeywords = Array.isArray(config.keywords) ? config.keywords : []
+  const metaKeywords = keywords ? [...configKeywords, ...keywords] : configKeywords
 
   const alternateLocale = locale === 'es' ? 'en' : 'es'
 
