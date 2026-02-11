@@ -10,6 +10,7 @@ import { generatePersonSchema, generateWebSiteSchema } from '@/lib/seo'
 import { routing } from '@/i18n/routing'
 import { Locale } from '@/data/types'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'],
@@ -149,6 +150,7 @@ export default async function LocaleLayout({
             </div>
           </NextIntlClientProvider>
           <SpeedInsights />
+          <Analytics />
       </body>
     </html>
   )
