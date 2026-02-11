@@ -2,7 +2,7 @@ import { Locale } from '@/data/types'
 
 export const SITE_CONFIG = {
   name: 'Carlos Anaya Ruiz',
-  url: 'https://carlosanaya.dev',
+  url: 'https://carlosanayaweb.com',
   ogImage: '/images/og-default.png',
   locales: ['es', 'en'] as const,
   defaultLocale: 'es' as const,
