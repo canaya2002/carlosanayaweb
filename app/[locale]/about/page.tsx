@@ -22,6 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   return generatePageMetadata({
     title: locale === 'en' ? 'About Me' : 'Sobre Mí',
+    description: locale === 'en'
+      ? 'Carlos Anaya Ruiz — Software development leader focused on innovation, AI/LLMs and cybersecurity. Learn about his career, skills and professional background.'
+      : 'Carlos Anaya Ruiz — Líder en desarrollo de software con enfoque en innovación, IA/LLMs y ciberseguridad. Conoce su trayectoria, habilidades y formación profesional.',
     path: '/about',
     locale: locale as Locale,
   })
@@ -39,6 +42,10 @@ function AboutContent({ locale }: { locale: Locale }) {
   const awards = getAwards(locale)
   const skillsByCategory = getSkillsByCategory(locale)
 
+  const avatarAlt = locale === 'en'
+    ? 'Carlos Anaya Ruiz - Professional photo, Software Development Manager'
+    : 'Carlos Anaya Ruiz - Foto profesional, Software Development Manager'
+
   return (
     <div className="container mx-auto px-4 py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{
@@ -54,15 +61,22 @@ function AboutContent({ locale }: { locale: Locale }) {
         <div className="mb-12 text-center">
           <div className="mb-6 flex justify-center">
             <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
-              <Image src="/images/avatar-carlos.png" alt={personal.name} fill className="object-cover" sizes="128px" priority />
+              <Image
+                src="/images/carlos-anaya-ruiz-software-development-manager.png"
+                alt={avatarAlt}
+                fill
+                className="object-cover"
+                sizes="128px"
+                priority
+              />
             </div>
           </div>
           <h1 className="mb-2 text-4xl font-bold tracking-tight md:text-5xl">{personal.name}</h1>
           <p className="text-xl text-primary">{personal.title}</p>
           <div className="mt-6 flex justify-center gap-4">
-            <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="LinkedIn"><Linkedin className="h-5 w-5" /></a>
-            <a href={SOCIAL_LINKS.github1} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="GitHub"><Github className="h-5 w-5" /></a>
-            <a href={`mailto:${SOCIAL_LINKS.email}`} className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="Email"><Mail className="h-5 w-5" /></a>
+            <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="LinkedIn de Carlos Anaya Ruiz"><Linkedin className="h-5 w-5" /></a>
+            <a href={SOCIAL_LINKS.github1} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="GitHub de Carlos Anaya Ruiz"><Github className="h-5 w-5" /></a>
+            <a href={`mailto:${SOCIAL_LINKS.email}`} className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="Email de Carlos Anaya Ruiz"><Mail className="h-5 w-5" /></a>
           </div>
         </div>
 

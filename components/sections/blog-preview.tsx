@@ -42,7 +42,7 @@ export function BlogPreview({ locale }: Props) {
                   <div className="relative h-48 overflow-hidden bg-muted md:h-auto md:w-72 md:shrink-0">
                     <Image
                       src={post.coverImage}
-                      alt={post.title}
+                      alt={`Carlos Anaya Ruiz - ${locale === 'en' ? 'Article' : 'Artículo'}: ${post.title}`}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 288px"

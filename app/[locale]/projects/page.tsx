@@ -20,7 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   return generatePageMetadata({
     title: locale === 'en' ? 'Projects' : 'Proyectos',
-    description: locale === 'en' ? 'Featured projects by Carlos Anaya Ruiz.' : 'Proyectos destacados de Carlos Anaya Ruiz.',
+    description: locale === 'en'
+      ? 'Carlos Anaya Ruiz — Featured projects in software development, AI platforms, and web infrastructure modernization. Full-stack solutions with Next.js, Python and more.'
+      : 'Carlos Anaya Ruiz — Proyectos destacados en desarrollo de software, plataformas de IA y modernización de infraestructura web. Soluciones full-stack con Next.js, Python y más.',
     path: '/projects',
     locale: locale as Locale,
   })
@@ -62,7 +64,13 @@ function ProjectsContent({ locale }: { locale: Locale }) {
                     <div className="grid h-full grid-cols-2 gap-2 p-4">
                       {project.images.slice(0, 2).map((img, imgIndex) => (
                         <div key={imgIndex} className="relative aspect-video overflow-hidden rounded-lg bg-muted">
-                          <Image src={img} alt={`${project.title} ${imgIndex + 1}`} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 25vw" />
+                          <Image
+                            src={img}
+                            alt={`Carlos Anaya Ruiz - ${locale === 'en' ? 'Project' : 'Proyecto'} ${project.title} - ${locale === 'en' ? 'Screenshot' : 'Captura'} ${imgIndex + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            sizes="(max-width: 768px) 50vw, 25vw"
+                          />
                         </div>
                       ))}
                     </div>

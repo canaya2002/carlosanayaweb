@@ -39,7 +39,7 @@ export function ProjectsPreview({ locale }: Props) {
                 <div className="relative h-48 overflow-hidden bg-muted">
                   <Image
                     src={project.images[0]}
-                    alt={project.title}
+                    alt={`Carlos Anaya Ruiz - ${locale === 'en' ? 'Project' : 'Proyecto'}: ${project.title}`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"

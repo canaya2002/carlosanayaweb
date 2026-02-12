@@ -20,7 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   return generatePageMetadata({
     title: locale === 'en' ? 'Blog' : 'Blog',
-    description: locale === 'en' ? 'Articles on technology, AI, cybersecurity and software development.' : 'Artículos sobre tecnología, IA, ciberseguridad y desarrollo de software.',
+    description: locale === 'en'
+      ? 'Carlos Anaya Ruiz — Blog on technology, artificial intelligence, cybersecurity and software development. Insights from a Software Development Manager.'
+      : 'Carlos Anaya Ruiz — Blog sobre tecnología, inteligencia artificial, ciberseguridad y desarrollo de software. Reflexiones de un Software Development Manager.',
     path: '/blog',
     locale: locale as Locale,
   })
@@ -62,7 +64,13 @@ function BlogPageContent({ locale, posts }: { locale: Locale; posts: ReturnType<
             <Card key={post.id} className="group overflow-hidden transition-shadow hover:shadow-lg">
               <Link href={`/blog/${post.slug}`} className="md:flex">
                 <div className="relative h-48 overflow-hidden bg-muted md:h-auto md:w-72 md:shrink-0">
-                  <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 288px" />
+                  <Image
+                    src={post.coverImage}
+                    alt={`Carlos Anaya Ruiz - ${locale === 'en' ? 'Article' : 'Artículo'}: ${post.title}`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 288px"
+                  />
                 </div>
                 <div className="flex flex-1 flex-col">
                   <CardHeader>

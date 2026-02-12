@@ -17,6 +17,10 @@ export function HeroSection({ locale }: HeroProps) {
   const featuredPosts = getFeaturedPosts(locale)
   const t = useTranslations('hero')
 
+  const avatarAlt = locale === 'en'
+    ? 'Carlos Anaya Ruiz - Software Development Manager and Full Stack Developer'
+    : 'Carlos Anaya Ruiz - Software Development Manager y Desarrollador Full Stack'
+
   return (
     <section className="relative overflow-hidden py-16 md:py-24 lg:py-32">
       {/* Background */}
@@ -30,7 +34,14 @@ export function HeroSection({ locale }: HeroProps) {
           {/* Identity */}
           <div className="mb-8 flex items-center gap-4">
             <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
-              <Image src="/images/avatar-carlos.png" alt={personal.name} fill className="object-cover" sizes="64px" priority />
+              <Image
+                src="/images/carlos-anaya-ruiz-software-development-manager.png"
+                alt={avatarAlt}
+                fill
+                className="object-cover"
+                sizes="64px"
+                priority
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
@@ -88,13 +99,13 @@ export function HeroSection({ locale }: HeroProps) {
 
           {/* Social */}
           <div className="mt-8 flex gap-4">
-            <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="LinkedIn">
+            <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="LinkedIn de Carlos Anaya Ruiz">
               <Linkedin className="h-5 w-5" />
             </a>
-            <a href={SOCIAL_LINKS.github1} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="GitHub">
+            <a href={SOCIAL_LINKS.github1} target="_blank" rel="noopener noreferrer" className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="GitHub de Carlos Anaya Ruiz">
               <Github className="h-5 w-5" />
             </a>
-            <a href={`mailto:${SOCIAL_LINKS.email}`} className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="Email">
+            <a href={`mailto:${SOCIAL_LINKS.email}`} className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-primary" aria-label="Email de Carlos Anaya Ruiz">
               <Mail className="h-5 w-5" />
             </a>
           </div>

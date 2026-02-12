@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!project) return generatePageMetadata({ title: 'Not Found', locale: locale as Locale })
   return generatePageMetadata({
     title: project.title,
-    description: project.description,
+    description: `Carlos Anaya Ruiz — ${project.description}`,
     path: `/projects/${slug}`,
     locale: locale as Locale,
   })
@@ -92,7 +92,13 @@ function ProjectDetailContent({ project, locale }: { project: NonNullable<Return
           <div className="grid gap-4 md:grid-cols-3">
             {project.images.map((img, index) => (
               <div key={index} className="relative aspect-video overflow-hidden rounded-xl bg-muted shadow-sm">
-                <Image src={img} alt={`${project.title} ${index + 1}`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                <Image
+                  src={img}
+                  alt={`Carlos Anaya Ruiz - ${locale === 'en' ? 'Project' : 'Proyecto'} ${project.title} - ${locale === 'en' ? 'Screenshot' : 'Captura'} ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
             ))}
           </div>

@@ -20,7 +20,7 @@ const awardsData: Record<Locale, Award[]> = {
       date: '2024-10',
       description: 'Plataforma que procesa datos abiertos de NASA (Landsat/Sentinel) para identificar islas de calor y contaminación en zonas urbanas marginadas.',
       impact: 'Reconocimiento "Galactic Problem Solver" por contribución técnica con datasets complejos y visualizaciones.',
-      image: '/images/awards/nasa-spaceapps.png',
+      image: '/images/awards/carlos-anaya-ruiz-nasa-spaceapps-aurascope.png',
     },
     {
       id: 'logiroute-ai',
@@ -29,7 +29,7 @@ const awardsData: Record<Locale, Award[]> = {
       date: '2022-04',
       description: 'Sistema de optimización de rutas de logística urbana utilizando inteligencia artificial.',
       impact: 'Ganador 1er lugar hackathon 2022. Reducción proyectada del 15% en consumo de combustible.',
-      image: '/images/awards/logiroute.png',
+      image: '/images/awards/carlos-anaya-ruiz-logiroute-ai-hackathon.png',
     },
     {
       id: 'toefl',
@@ -38,7 +38,7 @@ const awardsData: Record<Locale, Award[]> = {
       date: '2023-12',
       description: 'Calificación de 92 puntos demostrando dominio avanzado del idioma inglés.',
       impact: 'Dominio avanzado en lectura, escucha, speaking y writing bajo estándares internacionales ETS.',
-      image: '/images/awards/toefl.png',
+      image: '/images/awards/carlos-anaya-ruiz-toefl-certificacion-ingles.png',
     },
   ],
   en: [
@@ -49,7 +49,7 @@ const awardsData: Record<Locale, Award[]> = {
       date: '2024-10',
       description: 'Platform that processes open NASA data (Landsat/Sentinel) to identify heat islands and pollution in marginalized urban areas.',
       impact: '"Galactic Problem Solver" recognition for technical contribution with complex datasets and visualizations.',
-      image: '/images/awards/nasa-spaceapps.png',
+      image: '/images/awards/carlos-anaya-ruiz-nasa-spaceapps-aurascope.png',
     },
     {
       id: 'logiroute-ai',
@@ -58,7 +58,7 @@ const awardsData: Record<Locale, Award[]> = {
       date: '2022-04',
       description: 'Urban logistics route optimization system using artificial intelligence.',
       impact: '1st place winner hackathon 2022. Projected 15% reduction in fuel consumption.',
-      image: '/images/awards/logiroute.png',
+      image: '/images/awards/carlos-anaya-ruiz-logiroute-ai-hackathon.png',
     },
     {
       id: 'toefl',
@@ -67,7 +67,7 @@ const awardsData: Record<Locale, Award[]> = {
       date: '2023-12',
       description: '92-point score demonstrating advanced English language proficiency.',
       impact: 'Advanced proficiency in reading, listening, speaking and writing under international ETS standards.',
-      image: '/images/awards/toefl.png',
+      image: '/images/awards/carlos-anaya-ruiz-toefl-certificacion-ingles.png',
     },
   ],
 }

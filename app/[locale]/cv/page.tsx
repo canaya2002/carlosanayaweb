@@ -25,7 +25,14 @@ interface Props { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  return generatePageMetadata({ title: 'CV', path: '/cv', locale: locale as Locale })
+  return generatePageMetadata({
+    title: 'CV',
+    description: locale === 'en'
+      ? 'Carlos Anaya Ruiz — Full CV. Professional experience at Amazon, education at Tec de Monterrey, certifications, projects and technical skills in software development, AI and cybersecurity.'
+      : 'Carlos Anaya Ruiz — CV completo. Experiencia profesional en Amazon, educación en Tec de Monterrey, certificaciones, proyectos y habilidades técnicas en desarrollo de software, IA y ciberseguridad.',
+    path: '/cv',
+    locale: locale as Locale,
+  })
 }
 
 export default async function CVPage({ params }: Props) {
@@ -44,6 +51,10 @@ function CVContent({ locale }: { locale: Locale }) {
   const awards = getAwards(locale)
   const skillsByCategory = getSkillsByCategory(locale)
 
+  const avatarAlt = locale === 'en'
+    ? 'Carlos Anaya Ruiz - CV photo, Software Development Manager'
+    : 'Carlos Anaya Ruiz - Foto de CV, Software Development Manager'
+
   return (
     <div className="container mx-auto px-4 py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{
@@ -60,7 +71,14 @@ function CVContent({ locale }: { locale: Locale }) {
         <div className="mb-12 rounded-xl border bg-card p-8">
           <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
             <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
-              <Image src="/images/avatar-carlos.png" alt={personal.name} fill className="object-cover" sizes="112px" priority />
+              <Image
+                src="/images/carlos-anaya-ruiz-software-development-manager.png"
+                alt={avatarAlt}
+                fill
+                className="object-cover"
+                sizes="112px"
+                priority
+              />
             </div>
             <div className="flex-1 text-center md:text-left">
               <h1 className="mb-1 text-3xl font-bold tracking-tight md:text-4xl">{personal.name}</h1>
@@ -196,7 +214,13 @@ function CVContent({ locale }: { locale: Locale }) {
                   {certs.map((cert) => (
                     <Card key={cert.id} className="group">
                       <div className="relative h-32 overflow-hidden bg-muted">
-                        <Image src={cert.image} alt={cert.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                        <Image
+                          src={cert.image}
+                          alt={`Carlos Anaya Ruiz - ${locale === 'en' ? 'Certification' : 'Certificación'}: ${cert.name} - ${cert.issuer}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
                       </div>
                       <CardContent className="p-4">
                         <h4 className="line-clamp-2 font-medium transition-colors group-hover:text-primary">{cert.name}</h4>

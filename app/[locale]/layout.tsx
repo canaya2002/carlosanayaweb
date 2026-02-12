@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { SITE_CONFIG, getSiteConfig } from '@/lib/constants'
-import { generatePersonSchema, generateWebSiteSchema } from '@/lib/seo'
+import { generatePersonSchema, generateWebSiteSchema, generateOrganizationSchema } from '@/lib/seo'
 import { routing } from '@/i18n/routing'
 import { Locale } from '@/data/types'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -133,6 +133,12 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateWebSiteSchema(locale as Locale)),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateOrganizationSchema(locale as Locale)),
           }}
         />
       </head>

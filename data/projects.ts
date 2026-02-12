@@ -39,7 +39,11 @@ Se implementó un pipeline de CI/CD completo para garantizar la calidad del cód
       endDate: null,
       current: true,
       technologies: ['Python', 'Next.js', 'TypeScript', 'OpenAI API', 'Redis', 'Docker', 'CI/CD'],
-      images: ['/images/projects/nora-ai-hero.png', '/images/projects/nora-ai-dashboard.png', '/images/projects/nora-ai-agents.png'],
+      images: [
+        '/images/projects/carlos-anaya-ruiz-nora-ai-plataforma-orquestacion.png',
+        '/images/projects/carlos-anaya-ruiz-nora-ai-dashboard-agentes.png',
+        '/images/projects/carlos-anaya-ruiz-nora-ai-flujos-automatizados.png',
+      ],
       featured: true,
       category: 'ai',
       highlights: [
@@ -67,7 +71,11 @@ Las optimizaciones de SEO y performance resultaron en mejoras significativas en 
       endDate: '2026-02',
       current: false,
       technologies: ['Next.js', 'TypeScript', 'Python', 'HubSpot', 'Tailwind CSS', 'Vercel', 'SEO'],
-      images: ['/images/projects/solis-hero.png', '/images/projects/solis-dashboard.png', '/images/projects/solis-mobile.png'],
+      images: [
+        '/images/projects/carlos-anaya-ruiz-solis-web-modernizacion.png',
+        '/images/projects/carlos-anaya-ruiz-solis-dashboard-crm.png',
+        '/images/projects/carlos-anaya-ruiz-solis-web-responsive.png',
+      ],
       featured: true,
       category: 'web',
       highlights: [
@@ -95,7 +103,11 @@ A complete CI/CD pipeline was implemented to ensure code quality and automated d
       endDate: null,
       current: true,
       technologies: ['Python', 'Next.js', 'TypeScript', 'OpenAI API', 'Redis', 'Docker', 'CI/CD'],
-      images: ['/images/projects/nora-ai-hero.png', '/images/projects/nora-ai-dashboard.png', '/images/projects/nora-ai-agents.png'],
+      images: [
+        '/images/projects/carlos-anaya-ruiz-nora-ai-plataforma-orquestacion.png',
+        '/images/projects/carlos-anaya-ruiz-nora-ai-dashboard-agentes.png',
+        '/images/projects/carlos-anaya-ruiz-nora-ai-flujos-automatizados.png',
+      ],
       featured: true,
       category: 'ai',
       highlights: [
@@ -123,7 +135,11 @@ SEO and performance optimizations resulted in significant improvements in organi
       endDate: '2026-02',
       current: false,
       technologies: ['Next.js', 'TypeScript', 'Python', 'HubSpot', 'Tailwind CSS', 'Vercel', 'SEO'],
-      images: ['/images/projects/solis-hero.png', '/images/projects/solis-dashboard.png', '/images/projects/solis-mobile.png'],
+      images: [
+        '/images/projects/carlos-anaya-ruiz-solis-web-modernizacion.png',
+        '/images/projects/carlos-anaya-ruiz-solis-dashboard-crm.png',
+        '/images/projects/carlos-anaya-ruiz-solis-web-responsive.png',
+      ],
       featured: true,
       category: 'web',
       highlights: [
