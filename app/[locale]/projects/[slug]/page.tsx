@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { getProjectBySlug, getAllProjectSlugs } from '@/data/projects'
-import { generatePageMetadata, generateBreadcrumbSchema } from '@/lib/seo'
+import { generatePageMetadata, generateBreadcrumbSchema, generateProjectSchema } from '@/lib/seo'
 import { formatShortDate } from '@/lib/utils'
 import { Locale } from '@/data/types'
 
@@ -49,6 +49,17 @@ function ProjectDetailContent({ project, locale }: { project: NonNullable<Return
 
   return (
     <div className="container mx-auto px-4 py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify(generateProjectSchema({
+          title: project.title,
+          description: project.description,
+          slug: project.slug,
+          technologies: project.technologies,
+          startDate: project.startDate,
+          endDate: project.endDate,
+          locale,
+        })),
+      }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify(generateBreadcrumbSchema([
           { name: locale === 'en' ? 'Home' : 'Inicio', url: '/' },
@@ -114,6 +125,48 @@ function ProjectDetailContent({ project, locale }: { project: NonNullable<Return
           </div>
         </section>
 
+        {/* Context & Problem */}
+        {(project.context || project.problem) && (
+          <section className="mb-12 grid gap-6 md:grid-cols-2">
+            {project.context && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">
+                    {locale === 'en' ? 'Context' : 'Contexto'}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base text-muted-foreground">{project.context}</p>
+                </CardContent>
+              </Card>
+            )}
+            {project.problem && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">
+                    {locale === 'en' ? 'Problem' : 'Problema'}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base text-muted-foreground">{project.problem}</p>
+                </CardContent>
+              </Card>
+            )}
+          </section>
+        )}
+
+        {/* Architecture */}
+        {project.architecture && (
+          <section className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">
+              {locale === 'en' ? 'Architecture' : 'Arquitectura'}
+            </h2>
+            <div className="rounded-lg border bg-muted/30 p-6">
+              <p className="text-base leading-relaxed text-muted-foreground md:text-lg">{project.architecture}</p>
+            </div>
+          </section>
+        )}
+
         {/* Highlights */}
         {project.highlights && project.highlights.length > 0 && (
           <section className="mb-12">
@@ -134,6 +187,50 @@ function ProjectDetailContent({ project, locale }: { project: NonNullable<Return
                 </ul>
               </CardContent>
             </Card>
+          </section>
+        )}
+
+        {/* Challenges & Learnings */}
+        {(project.challenges || project.learnings) && (
+          <section className="mb-12 grid gap-6 md:grid-cols-2">
+            {project.challenges && project.challenges.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">
+                    {locale === 'en' ? 'Technical Challenges' : 'Retos Técnicos'}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {project.challenges.map((c, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                        <span>{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+            {project.learnings && project.learnings.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">
+                    {locale === 'en' ? 'Key Learnings' : 'Aprendizajes Clave'}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    {project.learnings.map((l, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                        <span>{l}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
           </section>
         )}
 

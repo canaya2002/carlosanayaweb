@@ -81,8 +81,8 @@ export function generatePageMetadata({
 export function generatePersonSchema(locale: Locale) {
   const jobTitle = 'Software Development Manager'
   const description = locale === 'en'
-    ? 'Software development leader focused on innovation, full-stack solutions, AI/LLMs and cybersecurity. Experience at Amazon, Tec de Monterrey graduate.'
-    : 'Líder en desarrollo de software con enfoque en innovación, soluciones full-stack, IA/LLMs y ciberseguridad. Experiencia en Amazon, egresado del Tec de Monterrey.'
+    ? 'Engineering leader specialized in full-stack architecture, AI/LLM orchestration, and cybersecurity. Experience at Amazon, Tec de Monterrey graduate. Builds and leads teams that ship scalable software.'
+    : 'Líder de ingeniería especializado en arquitectura full-stack, orquestación de IA/LLMs y ciberseguridad. Experiencia en Amazon, egresado del Tec de Monterrey. Construye y lidera equipos que entregan software escalable.'
 
   return {
     '@context': 'https://schema.org',
@@ -103,9 +103,6 @@ export function generatePersonSchema(locale: Locale) {
       '@type': 'Organization',
       name: 'Law Offices of Manuel Solis',
       url: 'https://www.manuelsolis.com',
-      description: locale === 'en'
-        ? 'Immigration law firm based in the United States'
-        : 'Firma de abogados de inmigración con sede en Estados Unidos',
     },
     alumniOf: [
       {
@@ -126,53 +123,33 @@ export function generatePersonSchema(locale: Locale) {
       },
     ],
     knowsLanguage: [
-      {
-        '@type': 'Language',
-        name: 'Spanish',
-        alternateName: 'es',
-      },
-      {
-        '@type': 'Language',
-        name: 'English',
-        alternateName: 'en',
-      },
+      { '@type': 'Language', name: 'Spanish', alternateName: 'es' },
+      { '@type': 'Language', name: 'English', alternateName: 'en' },
     ],
     hasCredential: [
       {
         '@type': 'EducationalOccupationalCredential',
         name: 'Cisco Certified Network Associate (CCNA)',
         credentialCategory: 'Professional Certification',
-        recognizedBy: {
-          '@type': 'Organization',
-          name: 'Cisco',
-        },
+        recognizedBy: { '@type': 'Organization', name: 'Cisco' },
       },
       {
         '@type': 'EducationalOccupationalCredential',
         name: 'TOEFL (92 points)',
         credentialCategory: 'Language Certification',
-        recognizedBy: {
-          '@type': 'Organization',
-          name: 'ETS (Educational Testing Service)',
-        },
+        recognizedBy: { '@type': 'Organization', name: 'ETS (Educational Testing Service)' },
       },
       {
         '@type': 'EducationalOccupationalCredential',
         name: 'PMP Certification Exam Prep Course 35 PDU',
         credentialCategory: 'Professional Certification',
-        recognizedBy: {
-          '@type': 'Organization',
-          name: 'PMI',
-        },
+        recognizedBy: { '@type': 'Organization', name: 'PMI' },
       },
       {
         '@type': 'EducationalOccupationalCredential',
         name: 'Cybersecurity Certification',
         credentialCategory: 'Professional Certification',
-        recognizedBy: {
-          '@type': 'Organization',
-          name: 'Coderhouse',
-        },
+        recognizedBy: { '@type': 'Organization', name: 'Coderhouse' },
       },
     ],
     award: [
@@ -187,31 +164,37 @@ export function generatePersonSchema(locale: Locale) {
       'https://www.linkedin.com/in/carlos-anaya-ruiz-732abb249/',
       'https://github.com/CArlos12002',
       'https://github.com/canaya2002',
+      'https://carlosanayaruiz.com',
     ],
     knowsAbout: locale === 'en'
-      ? ['Software Development', 'Full Stack Development', 'Project Management', 'Artificial Intelligence', 'Large Language Models', 'Cybersecurity', 'Next.js', 'React', 'TypeScript', 'Python', 'AWS', 'Scrum', 'PMBOK']
-      : ['Desarrollo de Software', 'Desarrollo Full Stack', 'Gestión de Proyectos', 'Inteligencia Artificial', 'Large Language Models', 'Ciberseguridad', 'Next.js', 'React', 'TypeScript', 'Python', 'AWS', 'Scrum', 'PMBOK'],
+      ? ['Software Architecture', 'Full-Stack Development', 'Engineering Team Leadership', 'AI Agent Orchestration', 'Large Language Models', 'Cybersecurity', 'Next.js', 'React', 'TypeScript', 'Python', 'AWS', 'CI/CD Pipelines', 'Agile Project Management']
+      : ['Arquitectura de Software', 'Desarrollo Full-Stack', 'Liderazgo de Equipos de Ingeniería', 'Orquestación de Agentes IA', 'Large Language Models', 'Ciberseguridad', 'Next.js', 'React', 'TypeScript', 'Python', 'AWS', 'Pipelines CI/CD', 'Gestión Ágil de Proyectos'],
   }
 }
 
 // ============================================================
-// ORGANIZATION SCHEMA — for current employer
+// CREATIVE WORK SCHEMA — for project detail pages
 // ============================================================
-export function generateOrganizationSchema(locale: Locale) {
+export function generateProjectSchema({
+  title, description, slug, technologies, startDate, endDate, locale,
+}: {
+  title: string; description: string; slug: string; technologies: string[]; startDate: string; endDate?: string | null; locale: Locale
+}) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Law Offices of Manuel Solis',
-    url: 'https://www.manuelsolis.com',
-    description: locale === 'en'
-      ? 'Immigration law firm providing legal services in the United States.'
-      : 'Firma de abogados de inmigración que brinda servicios legales en Estados Unidos.',
-    employee: {
+    '@type': 'CreativeWork',
+    name: title,
+    description,
+    url: `${SITE_CONFIG.url}/${locale}/projects/${slug}`,
+    inLanguage: locale === 'en' ? 'en-US' : 'es-MX',
+    dateCreated: startDate,
+    ...(endDate && { dateModified: endDate }),
+    author: {
       '@type': 'Person',
       name: 'Carlos Anaya Ruiz',
-      jobTitle: 'Software Development Manager',
       url: SITE_CONFIG.url,
     },
+    keywords: technologies.join(', '),
   }
 }
 
@@ -244,9 +227,9 @@ export function generateWebSiteSchema(locale: Locale) {
 // BLOG POST SCHEMA
 // ============================================================
 export function generateBlogPostSchema({
-  title, description, slug, publishedAt, modifiedAt, author = 'Carlos Anaya Ruiz', locale,
+  title, description, slug, publishedAt, modifiedAt, coverImage, author = 'Carlos Anaya Ruiz', locale,
 }: {
-  title: string; description: string; slug: string; publishedAt: string; modifiedAt?: string; author?: string; locale: Locale
+  title: string; description: string; slug: string; publishedAt: string; modifiedAt?: string; coverImage?: string; author?: string; locale: Locale
 }) {
   return {
     '@context': 'https://schema.org',
@@ -272,7 +255,7 @@ export function generateBlogPostSchema({
       '@type': 'WebPage',
       '@id': `${SITE_CONFIG.url}/${locale}/blog/${slug}`,
     },
-    image: `${SITE_CONFIG.url}/images/blog/carlos-anaya-ruiz-ia-etica-portada.png`,
+    image: coverImage ? `${SITE_CONFIG.url}${coverImage}` : `${SITE_CONFIG.url}/images/og-default.png`,
   }
 }
 

@@ -11,15 +11,15 @@
     "closeMenu": "Cerrar menú"
   },
   "hero": {
-    "cta": "Leer el Blog",
-    "ctaSecondary": "Ver Proyectos",
-    "ctaTertiary": "Contactar",
+    "cta": "Ver Proyectos",
+    "ctaSecondary": "Leer el Blog",
+    "ctaTertiary": "Ver CV",
     "latestPosts": "Últimas publicaciones",
     "readMore": "Leer artículo completo"
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Reflexiones sobre tecnología, innovación, inteligencia artificial y su impacto en la sociedad.",
+    "subtitle": "Artículos técnicos sobre arquitectura de software, IA/LLMs, ciberseguridad y liderazgo de ingeniería.",
     "readingTime": "min de lectura",
     "publishedOn": "Publicado el",
     "backToBlog": "Volver al blog",
@@ -73,6 +73,9 @@
       "web": "Desarrollo Web",
       "mobile": "Móvil",
       "data": "Datos",
+      "security": "Ciberseguridad",
+      "automation": "Automatización",
+      "leadership": "Liderazgo Técnico",
       "other": "Otros"
     }
   },
@@ -101,7 +104,7 @@
   },
   "contact": {
     "title": "Contacto",
-    "subtitle": "¿Tienes un proyecto en mente o quieres colaborar? Me encantaría escucharte. Completa el formulario o contáctame directamente.",
+    "subtitle": "¿Quieres colaborar en un proyecto técnico, discutir una idea o conectar profesionalmente? Escríbeme directamente.",
     "contactInfo": "Información de Contacto",
     "socialMedia": "Redes Sociales",
     "sendMessage": "Envíame un mensaje",
@@ -132,8 +135,8 @@
     "sending": "Enviando..."
   },
   "services": {
-    "title": "Servicios",
-    "subtitle": "Áreas en las que puedo ayudarte a alcanzar tus objetivos."
+    "title": "Áreas de Especialización",
+    "subtitle": "Dominios técnicos donde construyo, lidero y entrego resultados."
   },
   "newsletter": {
     "title": "Suscríbete al Newsletter",
@@ -147,9 +150,11 @@
     "tryAgain": "Intentar de nuevo"
   },
   "footer": {
-    "description": "Software Development Manager con enfoque en innovación, soluciones full-stack, IA/LLMs y ciberseguridad.",
+    "description": "Portfolio técnico y profesional. Líder de ingeniería con experiencia en Amazon. Arquitectura full-stack, IA/LLMs y ciberseguridad.",
     "navigation": "Navegación",
     "contactTitle": "Contacto",
+    "consulting": "Consultoría y Servicios",
+    "consultingCta": "Para servicios de consultoría y desarrollo, visita",
     "allRightsReserved": "Todos los derechos reservados."
   },
   "theme": {
@@ -171,12 +176,12 @@
     "present": "Presente"
   },
   "seo": {
-    "homeTitle": "Carlos Anaya Ruiz | Software Development Manager & Full Stack Developer",
-    "homeDescription": "Portafolio profesional de Carlos Anaya Ruiz. Líder en desarrollo de software, innovación tecnológica, full-stack, IA/LLMs y ciberseguridad.",
-    "aboutDescription": "Conoce más sobre Carlos Anaya Ruiz. Líder en desarrollo de software con enfoque en innovación, IA y ciberseguridad.",
-    "blogDescription": "Artículos sobre tecnología, inteligencia artificial, ciberseguridad y desarrollo de software.",
-    "projectsDescription": "Proyectos destacados de Carlos Anaya Ruiz. Desarrollo de software, IA, y soluciones tecnológicas innovadoras.",
-    "cvDescription": "CV completo de Carlos Anaya Ruiz. Experiencia profesional, educación, certificaciones, proyectos y habilidades.",
-    "contactDescription": "Contacta a Carlos Anaya Ruiz. ¿Tienes un proyecto en mente o quieres colaborar?"
+    "homeTitle": "Carlos Anaya Ruiz | Portfolio de Ingeniería y Liderazgo Técnico",
+    "homeDescription": "Portfolio técnico de Carlos Anaya Ruiz. Proyectos de arquitectura full-stack, orquestación de IA/LLMs y ciberseguridad. Experiencia en Amazon, Tec de Monterrey.",
+    "aboutDescription": "Trayectoria profesional de Carlos Anaya Ruiz. De SDE en Amazon a Software Development Manager. Arquitectura, IA y ciberseguridad.",
+    "blogDescription": "Artículos técnicos sobre arquitectura Next.js, IA/LLMs, ciberseguridad y liderazgo de ingeniería por Carlos Anaya Ruiz.",
+    "projectsDescription": "Proyectos de ingeniería de Carlos Anaya Ruiz. Orquestación de agentes IA, modernización web, arquitectura full-stack y casos reales.",
+    "cvDescription": "CV de Carlos Anaya Ruiz. Experiencia en Amazon, educación en Tec de Monterrey, certificaciones CCNA y PMP, proyectos de IA y ciberseguridad.",
+    "contactDescription": "Conecta con Carlos Anaya Ruiz para colaboraciones técnicas, proyectos de ingeniería u oportunidades profesionales."
   }
 }

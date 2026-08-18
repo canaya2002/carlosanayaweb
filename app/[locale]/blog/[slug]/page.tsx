@@ -88,7 +88,7 @@ function BlogPostContent({ post, locale, slug }: { post: NonNullable<ReturnType<
   return (
     <div className="container mx-auto px-4 py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify(generateBlogPostSchema({ title: post.title, description: post.excerpt, slug, publishedAt: post.publishedAt, modifiedAt: post.updatedAt, author: post.author.name, locale })),
+        __html: JSON.stringify(generateBlogPostSchema({ title: post.title, description: post.excerpt, slug, publishedAt: post.publishedAt, modifiedAt: post.updatedAt, coverImage: post.coverImage, author: post.author.name, locale })),
       }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{
         __html: JSON.stringify(generateBreadcrumbSchema([

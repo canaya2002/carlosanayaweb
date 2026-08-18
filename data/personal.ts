@@ -24,10 +24,12 @@ const personalData: Record<Locale, PersonalInfo> = {
     title: 'Software Development Manager',
     email: 'carlosaremployment@hotmail.com',
     location: 'México',
-    summary: `Actualmente me desempeño como líder/manager de desarrollo de software con enfoque en innovación, alineación estratégica y entrega de soluciones tecnológicas. Background fuerte en full-stack, datos/BI, automatización y fundamentos de IA/LLMs, además de experiencia en metodologías ágiles como Scrum y gestión basada en PMBOK.
+    summary: `Lidero equipos de ingeniería y entrego software escalable en entornos de alta exigencia. Mi trayectoria combina desarrollo hands-on como SDE II en Amazon con la gestión estratégica de proyectos y personas.
 
-Objetivo: diseñar e implementar soluciones tecnológicas escalables y seguras que fortalezcan objetivos organizacionales.`,
-    shortBio: 'Líder en desarrollo de software con enfoque en innovación, soluciones full-stack, IA/LLMs y ciberseguridad. Apasionado por crear tecnología que genere impacto real.',
+Mi stack técnico abarca arquitectura full-stack con Next.js, React y TypeScript; orquestación de agentes de IA y LLMs con Python; y ciberseguridad aplicada desde el diseño. Con formación en Ingeniería en Tecnologías Computacionales y una Especialidad en Ciberseguridad por el Tec de Monterrey, construyo sistemas que son rápidos, seguros y mantenibles.
+
+He ganado reconocimientos como el NASA Space Apps Challenge (AuraScope) y hackathons de optimización logística con IA. Me motiva resolver problemas complejos donde la ingeniería se cruza con el impacto real.`,
+    shortBio: 'Líder de ingeniería. Construyo y lidero equipos que entregan software escalable. Arquitectura full-stack, orquestación de IA/LLMs y ciberseguridad aplicada.',
     linkedin: 'https://www.linkedin.com/in/carlos-anaya-ruiz-732abb249/',
     github: ['https://github.com/CArlos12002', 'https://github.com/canaya2002'],
     languages: [
@@ -40,10 +42,12 @@ Objetivo: diseñar e implementar soluciones tecnológicas escalables y seguras q
     title: 'Software Development Manager',
     email: 'carlosaremployment@hotmail.com',
     location: 'Mexico',
-    summary: `Currently working as a software development leader/manager focused on innovation, strategic alignment, and delivery of technology solutions. Strong background in full-stack development, data/BI, automation, and AI/LLMs fundamentals, plus experience with agile methodologies like Scrum and PMBOK-based management.
+    summary: `I lead engineering teams and deliver scalable software in high-stakes environments. My trajectory combines hands-on development as SDE II at Amazon with strategic project and people management.
 
-Goal: design and implement scalable and secure technology solutions that strengthen organizational objectives.`,
-    shortBio: 'Software development leader focused on innovation, full-stack solutions, AI/LLMs and cybersecurity. Passionate about creating technology that makes real impact.',
+My technical stack spans full-stack architecture with Next.js, React, and TypeScript; AI agent and LLM orchestration with Python; and security-by-design practices. With a degree in Computer Science & Technology and a Cybersecurity Specialization from Tec de Monterrey, I build systems that are fast, secure, and maintainable.
+
+I've earned recognition at the NASA Space Apps Challenge (AuraScope) and AI logistics optimization hackathons. I'm driven by solving complex problems where engineering meets real-world impact.`,
+    shortBio: 'Engineering leader. I build and lead teams that ship scalable software. Full-stack architecture, AI/LLM orchestration, and applied cybersecurity.',
     linkedin: 'https://www.linkedin.com/in/carlos-anaya-ruiz-732abb249/',
     github: ['https://github.com/CArlos12002', 'https://github.com/canaya2002'],
     languages: [

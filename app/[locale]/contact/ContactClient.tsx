@@ -3,14 +3,14 @@
 import { useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Github, Linkedin, Mail, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Send, CheckCircle, AlertCircle, Loader2, ExternalLink } from 'lucide-react'
 import { Breadcrumbs } from '@/components/layout/breadcrumbs'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { getPersonalInfo } from '@/data/personal'
-import { SOCIAL_LINKS } from '@/lib/constants'
+import { SOCIAL_LINKS, PRIMARY_DOMAIN } from '@/lib/constants'
 import { sendContactMessage } from '@/lib/firebase-services'
 import { Locale } from '@/data/types'
 
@@ -146,6 +146,24 @@ export default function ContactClient() {
             <Button variant="outline" asChild><Link href="/cv">{t('viewCV')}</Link></Button>
             <Button variant="outline" asChild><Link href="/blog">{t('readBlog')}</Link></Button>
           </div>
+        </div>
+
+        <div className="mt-6 rounded-lg border border-primary/10 bg-primary/5 p-6 text-center">
+          <p className="text-sm text-muted-foreground">
+            {locale === 'en'
+              ? 'Looking for consulting or professional development services?'
+              : '¿Buscas servicios de consultoría o desarrollo profesional?'}
+            {' '}
+            <a
+              href={PRIMARY_DOMAIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+            >
+              {locale === 'en' ? 'Visit my consulting practice' : 'Visita mi práctica de consultoría'}
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          </p>
         </div>
       </div>
     </div>

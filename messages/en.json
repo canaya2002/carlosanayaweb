@@ -11,15 +11,15 @@
     "closeMenu": "Close menu"
   },
   "hero": {
-    "cta": "Read the Blog",
-    "ctaSecondary": "View Projects",
-    "ctaTertiary": "Contact",
+    "cta": "View Projects",
+    "ctaSecondary": "Read the Blog",
+    "ctaTertiary": "View CV",
     "latestPosts": "Latest posts",
     "readMore": "Read full article"
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Thoughts on technology, innovation, artificial intelligence and its impact on society.",
+    "subtitle": "Technical articles on software architecture, AI/LLMs, cybersecurity, and engineering leadership.",
     "readingTime": "min read",
     "publishedOn": "Published on",
     "backToBlog": "Back to blog",
@@ -73,6 +73,9 @@
       "web": "Web Development",
       "mobile": "Mobile",
       "data": "Data",
+      "security": "Cybersecurity",
+      "automation": "Automation",
+      "leadership": "Technical Leadership",
       "other": "Other"
     }
   },
@@ -101,7 +104,7 @@
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Have a project in mind or want to collaborate? I'd love to hear from you. Fill out the form or contact me directly.",
+    "subtitle": "Want to collaborate on a technical project, discuss an idea, or connect professionally? Reach out directly.",
     "contactInfo": "Contact Information",
     "socialMedia": "Social Media",
     "sendMessage": "Send me a message",
@@ -132,8 +135,8 @@
     "sending": "Sending..."
   },
   "services": {
-    "title": "Services",
-    "subtitle": "Areas where I can help you achieve your goals."
+    "title": "Areas of Expertise",
+    "subtitle": "Technical domains where I build, lead, and deliver results."
   },
   "newsletter": {
     "title": "Subscribe to the Newsletter",
@@ -147,9 +150,11 @@
     "tryAgain": "Try again"
   },
   "footer": {
-    "description": "Software Development Manager focused on innovation, full-stack solutions, AI/LLMs and cybersecurity.",
+    "description": "Technical and professional portfolio. Engineering leader with experience at Amazon. Full-stack architecture, AI/LLMs, and cybersecurity.",
     "navigation": "Navigation",
     "contactTitle": "Contact",
+    "consulting": "Consulting & Services",
+    "consultingCta": "For consulting and development services, visit",
     "allRightsReserved": "All rights reserved."
   },
   "theme": {
@@ -171,12 +176,12 @@
     "present": "Present"
   },
   "seo": {
-    "homeTitle": "Carlos Anaya Ruiz | Software Development Manager & Full Stack Developer",
-    "homeDescription": "Professional portfolio of Carlos Anaya Ruiz. Software development leader, technology innovation, full-stack, AI/LLMs and cybersecurity.",
-    "aboutDescription": "Learn more about Carlos Anaya Ruiz. Software development leader focused on innovation, AI and cybersecurity.",
-    "blogDescription": "Articles on technology, artificial intelligence, cybersecurity and software development.",
-    "projectsDescription": "Featured projects by Carlos Anaya Ruiz. Software development, AI, and innovative technology solutions.",
-    "cvDescription": "Full CV of Carlos Anaya Ruiz. Professional experience, education, certifications, projects and skills.",
-    "contactDescription": "Contact Carlos Anaya Ruiz. Have a project in mind or want to collaborate?"
+    "homeTitle": "Carlos Anaya Ruiz | Engineering Portfolio & Technical Leadership",
+    "homeDescription": "Technical portfolio of Carlos Anaya Ruiz. Full-stack architecture projects, AI/LLM orchestration, and cybersecurity. Experience at Amazon, Tec de Monterrey.",
+    "aboutDescription": "Professional journey of Carlos Anaya Ruiz. From SDE at Amazon to Software Development Manager. Architecture, AI, and cybersecurity.",
+    "blogDescription": "Technical articles on Next.js architecture, AI/LLMs, cybersecurity, and engineering leadership by Carlos Anaya Ruiz.",
+    "projectsDescription": "Engineering projects by Carlos Anaya Ruiz. AI agent orchestration, web modernization, full-stack architecture, and real case studies.",
+    "cvDescription": "CV of Carlos Anaya Ruiz. Experience at Amazon, Tec de Monterrey education, CCNA and PMP certifications, AI and cybersecurity projects.",
+    "contactDescription": "Connect with Carlos Anaya Ruiz for technical collaborations, engineering projects, or professional opportunities."
   }
 }

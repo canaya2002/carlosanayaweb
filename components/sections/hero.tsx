@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
-import { ArrowRight, Github, Linkedin, Mail, BookOpen } from 'lucide-react'
+import { ArrowRight, Github, Linkedin, Mail, Award, Briefcase } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { getPersonalInfo } from '@/data/personal'
-import { getFeaturedPosts } from '@/data/blog-posts'
+import { getFeaturedProjects } from '@/data/projects'
 import { SOCIAL_LINKS } from '@/lib/constants'
 import { Locale } from '@/data/types'
 import { useTranslations } from 'next-intl'
@@ -14,12 +15,16 @@ interface HeroProps {
 
 export function HeroSection({ locale }: HeroProps) {
   const personal = getPersonalInfo(locale)
-  const featuredPosts = getFeaturedPosts(locale)
+  const featuredProjects = getFeaturedProjects(locale)
   const t = useTranslations('hero')
 
   const avatarAlt = locale === 'en'
-    ? 'Carlos Anaya Ruiz - Software Development Manager and Full Stack Developer'
-    : 'Carlos Anaya Ruiz - Software Development Manager y Desarrollador Full Stack'
+    ? 'Carlos Anaya Ruiz - Software Development Manager, Engineering Leader and Full-Stack Architect'
+    : 'Carlos Anaya Ruiz - Software Development Manager, Líder de Ingeniería y Arquitecto Full-Stack'
+
+  const trustSignals = locale === 'en'
+    ? ['Ex-Amazon SDE II', 'Tec de Monterrey', 'NASA Space Apps Winner', 'CCNA Certified']
+    : ['Ex-Amazon SDE II', 'Tec de Monterrey', 'Ganador NASA Space Apps', 'Certificado CCNA']
 
   return (
     <section className="relative overflow-hidden py-16 md:py-24 lg:py-32">
@@ -33,64 +38,80 @@ export function HeroSection({ locale }: HeroProps) {
         <div className="mx-auto max-w-4xl">
           {/* Identity */}
           <div className="mb-8 flex items-center gap-4">
-            <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
+            <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-primary/20 bg-muted">
               <Image
                 src="/images/carlos-anaya-ruiz-software-development-manager.png"
                 alt={avatarAlt}
                 fill
                 className="object-cover"
-                sizes="64px"
+                sizes="80px"
                 priority
               />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
+              <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
                 {personal.name}
               </h1>
-              <p className="text-lg text-primary">{personal.title}</p>
+              <p className="text-lg font-medium text-primary">{personal.title}</p>
             </div>
           </div>
 
-          {/* Bio */}
-          <p className="mb-8 max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
-            {personal.shortBio}
+          {/* Positioning statement */}
+          <p className="mb-6 max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
+            {locale === 'en'
+              ? 'I build and lead engineering teams that ship scalable software. Full-stack architecture, AI/LLM orchestration, and applied cybersecurity.'
+              : 'Construyo y lidero equipos de ingeniería que entregan software escalable. Arquitectura full-stack, orquestación de IA/LLMs y ciberseguridad aplicada.'}
           </p>
 
-          {/* CTA - Blog First */}
+          {/* Trust signals */}
+          <div className="mb-8 flex flex-wrap gap-2">
+            {trustSignals.map((signal) => (
+              <Badge key={signal} variant="secondary" className="px-3 py-1 text-sm">
+                {signal}
+              </Badge>
+            ))}
+          </div>
+
+          {/* CTAs — Projects first (portfolio identity) */}
           <div className="mb-10 flex flex-wrap gap-4">
             <Button asChild size="lg" className="gap-2 text-base">
-              <Link href="/blog">
-                <BookOpen className="h-5 w-5" />
+              <Link href="/projects">
+                <Briefcase className="h-5 w-5" />
                 {t('cta')}
               </Link>
             </Button>
             <Button variant="outline" asChild size="lg" className="gap-2 text-base">
-              <Link href="/projects">
+              <Link href="/blog">
                 {t('ctaSecondary')}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
             <Button variant="ghost" asChild size="lg" className="text-base">
-              <Link href="/contact">{t('ctaTertiary')}</Link>
+              <Link href="/cv">{t('ctaTertiary')}</Link>
             </Button>
           </div>
 
-          {/* Featured Blog Post Preview */}
-          {featuredPosts[0] && (
+          {/* Featured Project Card (instead of blog) */}
+          {featuredProjects[0] && (
             <div className="rounded-xl border bg-card p-6 shadow-sm transition-shadow hover:shadow-md md:p-8">
               <div className="mb-3 flex items-center gap-2 text-sm font-medium text-primary">
-                <BookOpen className="h-4 w-4" />
-                {t('latestPosts')}
+                <Award className="h-4 w-4" />
+                {locale === 'en' ? 'Featured Project' : 'Proyecto Destacado'}
               </div>
-              <Link href={`/blog/${featuredPosts[0].slug}`}>
+              <Link href={`/projects/${featuredProjects[0].slug}`}>
                 <h2 className="mb-3 text-xl font-bold tracking-tight transition-colors hover:text-primary md:text-2xl">
-                  {featuredPosts[0].title}
+                  {featuredProjects[0].title}
                 </h2>
                 <p className="mb-4 line-clamp-2 text-base text-muted-foreground md:text-lg">
-                  {featuredPosts[0].excerpt}
+                  {featuredProjects[0].description}
                 </p>
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {featuredProjects[0].technologies.slice(0, 5).map((tech) => (
+                    <Badge key={tech} variant="outline">{tech}</Badge>
+                  ))}
+                </div>
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-primary">
-                  {t('readMore')}
+                  {locale === 'en' ? 'View case study' : 'Ver caso de estudio'}
                   <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>

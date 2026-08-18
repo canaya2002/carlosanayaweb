@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Github, Linkedin, Mail } from 'lucide-react'
-import { SOCIAL_LINKS } from '@/lib/constants'
+import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
+import { SOCIAL_LINKS, PRIMARY_DOMAIN } from '@/lib/constants'
 
 export function Footer() {
   const t = useTranslations('footer')
@@ -64,11 +64,25 @@ export function Footer() {
                 </a>
               </li>
             </ul>
+
+            <h3 className="mt-6 font-semibold">{t('consulting')}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {t('consultingCta')}{' '}
+              <a
+                href={PRIMARY_DOMAIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-medium text-primary transition-colors hover:underline"
+              >
+                carlosanayaruiz.com
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </p>
           </div>
         </div>
 
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>© {currentYear} Carlos Anaya Ruiz. {t('allRightsReserved')}</p>
+          <p>&copy; {currentYear} Carlos Anaya Ruiz. {t('allRightsReserved')}</p>
         </div>
       </div>
     </footer>

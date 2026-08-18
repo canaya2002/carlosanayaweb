@@ -11,16 +11,16 @@ export const SITE_CONFIG = {
 export function getSiteConfig(locale: Locale) {
   const configs: Record<Locale, { title: string; description: string; locale: string; keywords: string[] }> = {
     es: {
-      title: 'Carlos Anaya Ruiz — Líder en Desarrollo de Software, Innovación Tecnológica e IA',
-      description: 'Carlos Anaya Ruiz — Líder en desarrollo de software, innovación tecnológica, soluciones full-stack, IA/LLMs y ciberseguridad. Software Development Manager con experiencia en Amazon, estrategia digital y gestión de equipos.',
+      title: 'Carlos Anaya Ruiz — Portfolio de Ingeniería, Liderazgo Técnico e IA',
+      description: 'Portfolio técnico de Carlos Anaya Ruiz. Software Development Manager con experiencia en Amazon. Proyectos de arquitectura full-stack, orquestación de IA/LLMs, ciberseguridad y liderazgo de equipos de ingeniería.',
       locale: 'es_MX',
-      keywords: ['Carlos Anaya Ruiz', 'Software Development Manager', 'Full Stack Developer', 'Líder desarrollo software', 'Next.js', 'React', 'TypeScript', 'Python', 'Inteligencia Artificial', 'IA', 'Ciberseguridad', 'México', 'consultor tecnológico', 'innovación tecnológica'],
+      keywords: ['Carlos Anaya Ruiz', 'Software Development Manager', 'portfolio ingeniería', 'liderazgo técnico', 'arquitectura full-stack', 'Next.js', 'React', 'TypeScript', 'Python', 'inteligencia artificial', 'orquestación LLM', 'ciberseguridad', 'proyectos software', 'líder de ingeniería'],
     },
     en: {
-      title: 'Carlos Anaya Ruiz — Software Development Leader, Tech Innovation & AI',
-      description: 'Carlos Anaya Ruiz — Software development leader, technology innovation, full-stack solutions, AI/LLMs and cybersecurity. Software Development Manager with experience at Amazon, digital strategy and team management.',
+      title: 'Carlos Anaya Ruiz — Engineering Portfolio, Technical Leadership & AI',
+      description: 'Technical portfolio of Carlos Anaya Ruiz. Software Development Manager with experience at Amazon. Full-stack architecture projects, AI/LLM orchestration, cybersecurity, and engineering team leadership.',
       locale: 'en_US',
-      keywords: ['Carlos Anaya Ruiz', 'Software Development Manager', 'Full Stack Developer', 'Software development leader', 'Next.js', 'React', 'TypeScript', 'Python', 'Artificial Intelligence', 'AI', 'Cybersecurity', 'Mexico', 'technology consultant', 'tech innovation'],
+      keywords: ['Carlos Anaya Ruiz', 'Software Development Manager', 'engineering portfolio', 'technical leadership', 'full-stack architecture', 'Next.js', 'React', 'TypeScript', 'Python', 'artificial intelligence', 'LLM orchestration', 'cybersecurity', 'software projects', 'engineering leader'],
     },
   }
   return { ...SITE_CONFIG, ...configs[locale] }
@@ -41,3 +41,5 @@ export const SOCIAL_LINKS = {
   github2: 'https://github.com/canaya2002',
   email: 'carlosaremployment@hotmail.com',
 } as const
+
+export const PRIMARY_DOMAIN = 'https://carlosanayaruiz.com' as const

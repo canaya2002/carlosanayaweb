@@ -21,10 +21,10 @@ interface Props { params: Promise<{ locale: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   return generatePageMetadata({
-    title: locale === 'en' ? 'About Me' : 'Sobre Mí',
+    title: locale === 'en' ? 'About — Professional Journey' : 'Sobre Mí — Trayectoria Profesional',
     description: locale === 'en'
-      ? 'Carlos Anaya Ruiz — Software development leader focused on innovation, AI/LLMs and cybersecurity. Learn about his career, skills and professional background.'
-      : 'Carlos Anaya Ruiz — Líder en desarrollo de software con enfoque en innovación, IA/LLMs y ciberseguridad. Conoce su trayectoria, habilidades y formación profesional.',
+      ? 'Carlos Anaya Ruiz — From SDE at Amazon to Software Development Manager. Engineering leadership, full-stack architecture, AI/LLM orchestration, and cybersecurity specialization.'
+      : 'Carlos Anaya Ruiz — De SDE en Amazon a Software Development Manager. Liderazgo de ingeniería, arquitectura full-stack, orquestación de IA/LLMs y especialización en ciberseguridad.',
     path: '/about',
     locale: locale as Locale,
   })
@@ -85,6 +85,20 @@ function AboutContent({ locale }: { locale: Locale }) {
           {personal.summary.split('\n\n').map((p, i) => (
             <p key={i} className="mb-4 text-lg leading-relaxed text-muted-foreground">{p}</p>
           ))}
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Button variant="outline" asChild>
+              <Link href="/projects">
+                {locale === 'en' ? 'See my projects' : 'Ver mis proyectos'}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link href="/blog">
+                {locale === 'en' ? 'Read my articles' : 'Leer mis artículos'}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </section>
 
         <Separator className="my-12" />

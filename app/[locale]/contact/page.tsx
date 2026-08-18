@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title: locale === 'en' ? 'Contact' : 'Contacto',
     description: locale === 'en'
-      ? 'Carlos Anaya Ruiz — Contact me for projects, collaborations or consulting. Software Development Manager available for new opportunities.'
-      : 'Carlos Anaya Ruiz — Contáctame para proyectos, colaboraciones o consultoría. Software Development Manager disponible para nuevas oportunidades.',
+      ? 'Carlos Anaya Ruiz — Connect for technical collaborations, engineering projects, or professional opportunities.'
+      : 'Carlos Anaya Ruiz — Conecta para colaboraciones técnicas, proyectos de ingeniería u oportunidades profesionales.',
     path: '/contact',
     locale: locale as Locale,
   })
